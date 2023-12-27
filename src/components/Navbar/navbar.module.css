@@ -1,0 +1,19 @@
+.navbar {
+   background-color: #b4d693;  
+   padding: 10px;
+ }
+ 
+ .nav_list {
+   list-style: none; 
+   padding: 0; 
+   display: flex; 
+ }
+ 
+ .nav-item {
+   margin-right: 15px; 
+ }
+ 
+ .nav-link {
+   text-decoration: none; 
+   color: rgb(72, 28, 194); 
+ }
