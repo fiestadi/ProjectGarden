@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Categories = () => {
+const Allsales = () => {
   return <div>All sales Page</div>;
 };
 
-export default Categories;
+export default Allsales;

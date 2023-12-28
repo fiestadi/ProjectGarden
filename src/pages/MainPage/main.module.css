@@ -1,0 +1,54 @@
+.home-container {
+  max-height:600px ;
+ padding: 15px;
+}
+.header-container {
+  position: relative;
+  text-align: start;
+
+}
+
+.header-image {
+  margin-top: -15px;
+  width: 100%; 
+  height: auto;
+}
+
+.header-content {
+  margin-left: 2em;
+position: absolute;
+max-width: 1260px ;
+max-height: 212px;
+top: 2px;
+padding: 1em;
+gap: 30px;
+}
+
+.header-content h2 {
+  font-family: 'Montserrat', sans-serif;
+max-width: 830px;
+max-height: 212px;
+font-weight: 700px;
+ font-size: 76px;
+ color: 
+ #FFFFFF;
+ margin-bottom: 20px;
+ @media screen and (max-width: 600px) {
+font-size: 2em; 
+}
+}
+.header-button {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color:#393; 
+  color: #FFFFFF; 
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-left: 0.5em;
+  font-family: Montserrat;
+
+}
+
+ 
+ 

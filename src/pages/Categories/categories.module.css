@@ -1,0 +1,19 @@
+ .container {
+padding: 20px;
+margin-left: 37px; 
+}
+.heading{
+   color: #282828;
+   font-family: Montserrat;
+   font-size: 64px;
+   font-style: normal;
+   font-weight: 700;
+}
+@media screen and (max-width: 798px) {
+   .heading {
+     font-size: 48px; 
+   }
+ }
+.galleryContainer {
+   margin-bottom: 30px; 
+ }

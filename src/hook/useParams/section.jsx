@@ -13,6 +13,12 @@ const Section = () => {
     case 'categories':
       sectionContent = <CategoriesSection />;
       break;
+      case 'allproducts':
+      sectionContent = <ProductsSection />;
+      break;
+      case 'allsales':
+      sectionContent = <SalesSection />;
+      break;
     default:
       sectionContent = <DefaultSection />;
   }
@@ -31,6 +37,12 @@ const MainSection = () => {
 
 const CategoriesSection = () => {
   return <div>Categories Section Content</div>;
+};
+const ProductsSection = () => {
+  return <div>Products Section Content</div>;
+};
+const SalesSection = () => {
+  return <div>Sales Section Content</div>;
 };
 
 const DefaultSection = () => {

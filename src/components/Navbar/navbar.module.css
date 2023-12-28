@@ -1,19 +1,77 @@
 .navbar {
-   background-color: #b4d693;  
+     max-width: 1440px;
+  max-height: 128px; 
+   background-color:
+   #FFFFFF;  
    padding: 10px;
+ font-family: 'Montserrat', sans-serif;
+font-size: 20px;
+border-bottom: 1px solid var(--grey-divider, #DDD);
+
  }
+ @media only screen and (max-width: 600px) {
+  .navbar {
+ font-size: 16px; 
+    padding: 3px; 
+  }
+}
+
+ .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
  
- .nav_list {
+ .nav_list { 
+  top: 54px;
    list-style: none; 
    padding: 0; 
    display: flex; 
- }
- 
- .nav-item {
-   margin-right: 15px; 
+   justify-content: flex-start;
+   gap: 32px; 
  }
  
  .nav-link {
    text-decoration: none; 
-   color: rgb(72, 28, 194); 
+   color: 
+   #282828; 
+   width:108px;
+height:26px ;
  }
+ .active {
+  color:
+  #339933;
+}
+.logo img {
+  width: 100%;
+  height: auto;
+}
+.logo {
+  margin-left: 3em;
+  top: 30px;
+  max-width: 70px;
+  max-height: 70px;
+
+  @media screen and (max-width: 768px) {
+    max-width: 35px;
+    max-height: 35px;
+    margin-left: 1em; 
+    top: 10px; 
+  }
+}
+
+.busket {
+  top: 41px;
+  margin-right: 2.5em;
+}
+
+.busket img {
+  width: 48px;
+  height: 48px;
+
+  @media screen and (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+}
