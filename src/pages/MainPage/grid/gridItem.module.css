@@ -1,0 +1,19 @@
+.photo_grid {
+   display: grid;
+   gap: 8px;
+   grid-template-rows: auto 1fr; /* Image and caption take up separate rows */
+ }
+ 
+ .gridImg {
+   width: 100%;
+   max-height: 350px;
+ }
+ 
+ .caption {
+color: #282828;
+text-align: center;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+ }

@@ -9,7 +9,7 @@ font-size: 20px;
 border-bottom: 1px solid var(--grey-divider, #DDD);
 
  }
- @media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 768px) {
   .navbar {
  font-size: 16px; 
     padding: 3px; 

@@ -1,0 +1,95 @@
+footer {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1360px;
+  margin-left: 30px;
+}
+
+.footer_container {
+
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 26px;
+}
+
+.contact {
+  color: #282828;
+  font-family: Montserrat;
+  font-size: 4em;
+  font-style: normal;
+  font-weight: 700;
+  text-align: start;
+}
+
+.instagramButton {
+  max-width: 43px;
+  max-height: 44px;
+  color: #282828;
+  margin-right: 6px;
+
+}
+
+.text {
+  margin-top: 5px;
+  color: #8B8B8B;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 500px;
+  padding: 16px;
+  background-color: #F1F3F4;
+  border-radius: 12px;
+  
+}
+.content_adress{
+  padding: 16px;
+  background-color:#F1F3F4;
+  border-radius: 12px;
+  max-width: 860px;
+  max-height:180px; 
+  color:  #282828;
+  font-family: Montserrat;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+}
+.text_adress{
+  color: #282828;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-style: normal;
+}
+@media only screen and (max-width: 768px) {
+  .content_adress {
+    font-size: 14px;
+  }
+  .text_adress {
+    font-size: 14px;
+  }
+  .contact{
+    font-size:2.5em ;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .vertical {
+    padding: 10px;
+    min-width:300px ;
+  }
+  .text {
+    font-size: 18px; 
+  }
+  .text_adress {
+    font-size: 14px; 
+  }
+  .content_adress {
+    font-size: 14px;
+  }
+}

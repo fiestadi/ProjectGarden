@@ -9,7 +9,7 @@ margin-left: 37px;
    font-style: normal;
    font-weight: 700;
 }
-@media screen and (max-width: 798px) {
+@media screen and (max-width: 768px) {
    .heading {
      font-size: 48px; 
    }

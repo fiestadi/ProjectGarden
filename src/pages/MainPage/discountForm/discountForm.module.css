@@ -1,0 +1,89 @@
+.discountFormContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1260px;
+  max-height: 360px;
+  background: linear-gradient(261deg, #0B710B 32.63%, #393 98.96%);
+  border-radius: 12px;
+  margin-top: -22px;
+  margin-left: 30px;
+  position: relative;
+  z-index: 1;
+
+}
+.imageContainer{
+ max-width: 748px; 
+ border-radius: 12px;
+ background: cover no-repeat;
+}
+.discountImage {
+  width: 100%;
+}
+ .inputLabel {
+   display: block;
+   margin-bottom: 10px;
+   
+ }
+.inputField {
+border-radius: 6px;
+border: 1px solid  #FFF;
+width: 100%;
+padding: 16px 1px;
+margin-bottom: 10px;
+background:  linear-gradient(261deg, #0B710B 32.63%, #393 98.96%);
+
+ } 
+ .inputField::placeholder {
+  color: #FFF; 
+  font-style: italic; 
+  font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+margin-left: 10px;
+padding: 10px;
+}
+ .inputContainer {
+  flex-grow: 1;
+}
+ .button {
+ color: #282828;
+   border: none;
+   cursor: pointer;
+   display: flex;
+width: 100%;
+border-radius: 6px;
+background: #FFF;
+gap: 10px;
+ }
+ .button_discount{
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+margin-left: 160px;
+}
+ @media only screen and (max-width: 768px) {
+  .discountFormContainer {
+    flex-direction: column; 
+    align-items: center; 
+    margin-left: 0;
+    
+  }
+
+  .imageContainer {
+    max-width: 100%;
+    margin-left: 0; 
+  
+  }
+
+  .inputField {
+    padding: 12px; 
+  }
+
+  .button {
+    padding: 14px; 
+  }
+}
+ 

@@ -1,0 +1,50 @@
+.content_phone {
+  display: flex;
+  padding: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+  max-width: 826px;
+  max-height: 86px;
+  background-color: #F1F3F4;
+  border-radius: 12px;
+
+}
+
+.text {
+  margin-top: -10px;
+  color: #8B8B8B;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+
+}
+
+.callButton {
+  margin-top: -10px;
+  color: #282828;
+  font-family: Montserrat;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+
+}
+@media only screen and (max-width: 768px) {
+  .content_phone {
+    padding: 10px; 
+  }
+
+  .text {
+    font-size: 16px;
+    margin-top: 5px; 
+  }
+
+  .callButton {
+    margin-top: 3px; 
+    font-size: 20px; 
+  }
+}

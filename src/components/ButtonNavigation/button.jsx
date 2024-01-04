@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './button.module.css';
 const ButtonLink = () => {
   return (
     <div className={styles.navigation}>
-    <NavLink to="/" exact= "true">
+    <NavLink to="/" exact>
       <button className={styles.navButton}>
         Main page
       </button>
