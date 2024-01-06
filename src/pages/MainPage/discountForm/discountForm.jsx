@@ -20,12 +20,9 @@ const DiscountForm = () => {
   };
 
   const handleGetDiscount = () => {
-    // Implement logic to get discount (e.g., send data to server)
     console.log('Name:', name);
     console.log('Phone Number:', phoneNumber);
     console.log('Email:', email);
-
-    // Add additional logic for discount if needed
 
   };
 

@@ -4,10 +4,10 @@ footer {
   box-sizing: border-box;
   max-width: 1360px;
   margin-left: 30px;
+
 }
 
 .footer_container {
-
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 26px;

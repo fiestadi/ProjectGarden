@@ -1,16 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React,{useEffect} from 'react';
+import { Link} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './main.module.css';
 import headerImg from '../../components/assets/img.jpg';
-import Footer from '../../components/Footer/footer';
-import PhotoGrid from './grid/grid';
 import DiscountForm from './discountForm/discountForm';
+import GalleryItem from '../CategoriesPage/Gallery/galery';
+import { fetchCategories } from '../../store/slices/categoriesSlice';
 
 
 const MainPage = () => {
- 
+  const dispatch = useDispatch();
+  const { list } = useSelector(state => state.categories);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+  
   return (
-    <header>
+    <main>
       <div className={styles['home-container']}>
 
       {/* Header image */}
@@ -18,14 +25,17 @@ const MainPage = () => {
         <img src={headerImg} alt="#" className={styles['header-image']} />
         <div className={styles['header-content']}>
           <h2>Amazing Discounts on Garden Products!</h2>
-          <button className={styles['header-button']}>Check out</button>
+          <button className={styles['header-button']} >
+              Check out
+            </button>
+
         </div>
       </div>
 
       {/* image-gallery */}
       <div className={styles['gallery_container']}>
         <div className={styles['categories-container']}>
-          <p className={styles.paragraph}>Categories</p>
+          <p id="categories"  className={styles.paragraph}>Categories</p>
 
           <div className={styles['line']}></div>
         </div>
@@ -36,17 +46,18 @@ const MainPage = () => {
           </Link>
           </div>
          
-      <div className="slider">
-  <PhotoGrid />
-  </div>
+          <div className={styles.categories}>
+                {
+                    list.map(el => <GalleryItem key={el.id} {...el}/>)
+                }
+            </div>
   <div className={styles.background_container}>
     <p className={styles.discount_text}>5% off on the first order
 </p>
     <DiscountForm />
   </div>
-  <Footer />
   </div>
-</header> 
+</main> 
   );
   };
 

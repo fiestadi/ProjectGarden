@@ -1,0 +1,37 @@
+.item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.item:hover  {
+  transform: scale(1.1);
+}
+.item::before {
+  content: ''; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.item{
+  color: #282828;
+  text-align: center;
+  position: relative;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out; 
+  overflow: hidden;
+   /* chtobi ne vichodili za predeli cartochek */
+}
+@media (max-width: 768px) {
+  .item img {
+    height: 200px;
+  }
+}
