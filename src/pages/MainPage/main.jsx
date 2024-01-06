@@ -8,6 +8,7 @@ import GalleryItem from '../CategoriesPage/Gallery/galery';
 import { fetchCategories } from '../../store/slices/categoriesSlice';
 
 
+
 const MainPage = () => {
   const dispatch = useDispatch();
   const { list } = useSelector(state => state.categories);
@@ -45,7 +46,6 @@ const MainPage = () => {
             All Categories
           </Link>
           </div>
-         
           <div className={styles.categories}>
                 {
                     list.map(el => <GalleryItem key={el.id} {...el}/>)

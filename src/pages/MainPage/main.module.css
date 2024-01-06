@@ -84,6 +84,17 @@
   background-color: #DDD;
 }
 
+
+/* categoies  */
+.categories{
+  padding: 30px;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  text-align: center;
+  gap: 32px; 
+}
+
 @media only screen and (max-width: 768px) {
   .line {
     display: none;
