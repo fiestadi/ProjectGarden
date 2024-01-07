@@ -1,25 +1,40 @@
-// import React from 'react';
-// import styles from './style.module.css'
-// import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { URL } from '../../../components/URL/url';
+import styles from './productItem.module.css';
+const ProductItem = ({ item }) => {
+    const link = `/product/all`;
+    const discountedPrice = item.discont_price
+    ? item.price - (item.price * item.discont_price) / 100
+    : null;
 
-// import { URL } from '../../../components/URL/url';
-// const dispatch = useDispatch()
-// const  ProductItem ({id,title, discount_price,image,description,categoryId}) => {
+    
+    return (
 
-//    const link = `/product/${id}`
-//     return (
-//         <Link className={styles.product_item} to={link}>
-//             <div className={styles.picture}>
-//                 <img src={URL + image} alt={title} />
-//                 <button onClick={onClickAdd} className={styles.add_btn}>
-//                     Add to cart
-//                 </button>
-//             </div>
-         
-            
-//         </Link>
-        
-//     );
-//     }
-// export default ProductItem;
+        <Link to={link} className={styles.productItem}>
+            <div className={styles.productContainer}>
+                {item.discont_price > 0 && (
+                    <div className={styles.discountOverlay}>
+                        <p className={styles.discont}>-{item.discont_price}%</p>
+                    </div>
+                )}
+                <img className={styles.productImage} src={URL + item.image} alt={item.title} />
+                <div className={styles.productInfo}>
+                    <p className={styles.productInfo_title} >{item.title}</p>
+                    <div className={styles.price_product}>
+                    <p className={styles.productInfo_price}> ${item.price.toFixed(2)}</p>
+                  
+                       
+                    {discountedPrice && (
+              <p className={styles.productInfo_price_discounted}>
+                ${discountedPrice.toFixed(2)}
+              </p>
+            )}
+          </div>
+                    </div>
+              
+            </div>
+        </Link>
+    );
+};
+export default ProductItem;

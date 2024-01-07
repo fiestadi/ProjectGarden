@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/navbar';
 import NotFoundPage from './pages/NotFoundPage/404';
 import CategoriesPage from './pages/CategoriesPage/categories';
 import {fetchCategories} from './store/slices/categoriesSlice';
+import { fetchProducts } from './store/slices/productSlice';
 import { useDispatch } from 'react-redux';
 import Footer from './components/Footer/footer';
 
@@ -17,6 +18,7 @@ function App() {
   
   useEffect(()=>{
     dispatch(fetchCategories())
+    dispatch(fetchProducts())
   },[dispatch])
   return (
   
@@ -27,7 +29,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           {/* <Route path="/section/:sectionId" element={<Section />} /> */}
           <Route path="/categories" element={<CategoriesPage />} />
-          <Route path="/products/all" element={<AllProducts />} />
+          <Route path="/allproducts" element={<AllProducts/>} />
           <Route path="/allsales" element={<Allsales />} />
           <Route path='/*' element={<NotFoundPage/>}/>
         </Routes>

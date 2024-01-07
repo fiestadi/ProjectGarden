@@ -6,6 +6,7 @@ export const fetchProducts = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const resp = await fetch(`${URL}/products/all`)
+            console.log('resp', resp);
             if (!resp.ok) {
                 throw new Error('Server problem')
             }
@@ -29,33 +30,6 @@ export const productsSlice = createSlice({
         data: [],
     },
     reducers: {
-        sort: (state, { payload }) => {
-            state.data.sort((a, b) => {
-                const sortOrder = payload === 1 ? 1 : -1;
-                return sortOrder * (a.finalPrice - b.finalPrice);
-            })
-        },
-        searchByPrice: (state, { payload }) => {
-            const { from, to } = payload
-            state.data = state.data.map(el =>
-                ({ ...el, show: el.finalPrice <= to && el.finalPrice >= from })
-            );
-        },
-        filterDiscount: (state, { payload }) => {
-            if (payload) {
-                state.data = state.data.map(elem => {
-                    if (elem.discount_price == null) {
-                        elem.discount = false
-                    }
-                    return elem
-                })
-            } else {
-                state.data = state.data.map(elem => ({ ...elem, discount: true }))
-            }
-        },
-        resetFilter: (state) => {
-            state.data = state.data.map(el => ({ ...el, show: true, discount: true }))
-        }
 
     },
     extraReducers: (builder) => {
@@ -73,7 +47,5 @@ export const productsSlice = createSlice({
             })
     }
 })
-
-export const { sort, searchByPrice, filterDiscount, resetFilter } = productsSlice.actions
 
 export default productsSlice.reducer
