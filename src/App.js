@@ -4,15 +4,14 @@ import MainPage from './pages/MainPage/main';
 import AllProducts from './pages/ProductsPage/allproducts';
 import Allsales from './pages/AllSalesPage/allsales';
 import Navbar from './components/Navbar/navbar';
-import NotFoundPage from './pages/NotFoundPage/404';
 import CategoriesPage from './pages/CategoriesPage/categories';
 import {fetchCategories} from './store/slices/categoriesSlice';
 import { fetchProducts } from './store/slices/productSlice';
 import { useDispatch } from 'react-redux';
 import Footer from './components/Footer/footer';
-
+import SinglePage from './pages/SingleProductPage/singlePage';
 // import Section from './hook/useParams/section';
-
+import NotFoundPage from './pages/NotFoundPage/404';
 function App() {
   const dispatch = useDispatch()
   
@@ -32,6 +31,7 @@ function App() {
           <Route path="/allproducts" element={<AllProducts/>} />
           <Route path="/allsales" element={<Allsales />} />
           <Route path='/*' element={<NotFoundPage/>}/>
+          <Route path="/product/:id" element={<SinglePage/>}/>
         </Routes>
         <Footer />
       </div>

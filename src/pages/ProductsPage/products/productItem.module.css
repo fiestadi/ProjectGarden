@@ -25,8 +25,7 @@ text-align: center;
    align-items: center;
    
  } 
-
- .productImage {
+.productImage {
   width: 100%;
    max-height: 264px;
    object-fit: cover;
@@ -42,6 +41,7 @@ text-overflow: ellipsis;
 font-family: Montserrat;
 font-size: 20px;
 text-decoration: none;
+
  }
  .productInfo_price {
    text-align: center;
