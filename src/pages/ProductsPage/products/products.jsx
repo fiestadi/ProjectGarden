@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { URL } from '../../../components/URL/url';
 import styles from './productItem.module.css';
 const ProductItem = ({ item }) => {
-    const link = `/product/all`;
+    const link = `/product/${item.id}`;
     const discountedPrice = item.discont_price
     ? item.price - (item.price * item.discont_price) / 100
     : null;

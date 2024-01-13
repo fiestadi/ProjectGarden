@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk,createSlice } from '@reduxjs/toolkit'
 import { URL } from '../../components/URL/url';
 
 export const fetchProducts = createAsyncThunk(
@@ -6,7 +6,6 @@ export const fetchProducts = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const resp = await fetch(`${URL}/products/all`)
-            console.log('resp', resp);
             if (!resp.ok) {
                 throw new Error('Server problem')
             }

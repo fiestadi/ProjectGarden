@@ -5,18 +5,35 @@ export const fetchSingleProduct = createAsyncThunk(
     'product/fetchSingleProduct',
     async (id, { rejectWithValue }) => {
         try {
-            const resp = await fetch(`${URL}/products/${id}`)
-            if (!resp.ok) {
+            const res = await fetch(`${URL}/products/${id}`)
+            if (!res.ok) {
                 throw new Error('Server problem')
             }
-            const product = await resp.json()
+            const product = await res.json()
             return product
         } catch (error) {
             rejectWithValue(error.message)
         }
 
     }
-)
+);
+
+export const fetchProductsWithDiscount = createAsyncThunk(
+    'product/fetchProductsWithDiscount',
+    async (_, { rejectWithValue }) => {
+      try {
+        const res = await fetch(`${URL}/products/allsale`);
+        if (!res.ok) {
+          throw new Error('Server problem');
+        }
+        const productsWithDiscount = await res.json();
+        return productsWithDiscount;
+      } catch (error) {
+        rejectWithValue(error.message);
+      }
+    }
+  );
+  
 export const singleProductSlice = createSlice({
     name: 'item',
     initialState: {

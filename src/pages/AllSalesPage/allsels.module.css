@@ -1,0 +1,21 @@
+
+ .title{
+   color: #282828;
+font-family: Montserrat;
+font-size: 64px;
+font-style: normal;
+font-weight: 700;
+
+ } 
+ .productList {
+   align-items: center;
+   display: flex; 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 10px; 
+   position: relative;
+  width: 100%;
+
+ }
+
+

@@ -27,7 +27,7 @@ const Navbar = () => {
         </li>
         <li className={styles['nav-item']}>
           <Link to="/allsales" className={`${styles['nav-link']} ${location.pathname === '/allsales' ? styles.active : ''}`}>
-            All Sales
+            All sales
           </Link>
          </li>
        </ul>

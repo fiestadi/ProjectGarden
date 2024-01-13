@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ButtonLink from '../../components/ButtonNavigation/button';
 import GalleryItem from './Gallery/galery';
 
+
 const CategoriesPage = () => {
 
     const { list } = useSelector(state => state.categories)
@@ -13,7 +14,7 @@ const CategoriesPage = () => {
     },[])
 
     return (
-      <div className={styles.categoriesPage}>
+      <section className={styles.categoriesPage}>
         {/* Navigation Links */}
         
       <ButtonLink />
@@ -27,7 +28,7 @@ const CategoriesPage = () => {
                 }
             </div>
             </div>
-        </div>
+        </section>
     );
 };
 

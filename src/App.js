@@ -12,6 +12,7 @@ import Footer from './components/Footer/footer';
 import SinglePage from './pages/SingleProductPage/singlePage';
 // import Section from './hook/useParams/section';
 import NotFoundPage from './pages/NotFoundPage/404';
+import CategoryList from './components/categoryList/categoryList';
 function App() {
   const dispatch = useDispatch()
   
@@ -28,10 +29,11 @@ function App() {
           <Route path="/" element={<MainPage />} />
           {/* <Route path="/section/:sectionId" element={<Section />} /> */}
           <Route path="/categories" element={<CategoriesPage />} />
+          <Route path='/categories/:categoryTitle/:id' element={<CategoryList/>}/>
           <Route path="/allproducts" element={<AllProducts/>} />
           <Route path="/allsales" element={<Allsales />} />
-          <Route path='/*' element={<NotFoundPage/>}/>
           <Route path="/product/:id" element={<SinglePage/>}/>
+          <Route path='*' element={<NotFoundPage/>}/>
         </Routes>
         <Footer />
       </div>

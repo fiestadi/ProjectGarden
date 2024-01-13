@@ -2,7 +2,7 @@
 align-items: center;
 display: flex;
 flex-direction: column;
-
+gap: 20px;
 }
  .discountOverlay {
    width: 57px;
@@ -17,13 +17,18 @@ font-size: 15px;
 text-align: center;
  }
  .productItem {
-   margin-top: 10px;
    border: 1px solid #ddd;
+   border-radius: 5px;
    text-decoration: none;
    position: relative;
   width: 100%;
    align-items: center;
-   
+   /* transition: transform 0.3s ease; 
+    overflow: hidden;
+   &:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  } */
  } 
 .productImage {
   width: 100%;

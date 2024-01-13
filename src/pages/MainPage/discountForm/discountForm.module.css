@@ -56,6 +56,16 @@ border-radius: 6px;
 background: #FFF;
 gap: 10px;
  }
+ .clickedButton {
+  color:#393;
+   border: none;
+   cursor: pointer;
+   display: flex;
+width: 100%;
+border-radius: 6px;
+background: #FFF;
+gap: 10px;
+ }
  .button_discount{
   text-align: center;
   font-family: Montserrat;

@@ -1,9 +1,186 @@
+.productContainer {
+   width: 100%;
+   margin-left: 2em;
+   margin-top: 5em;
+   display: flex;
+   align-items: center;
+   gap: 4em;
 
+ }
 .productTitle{
    color:#282828;
    font-family: Montserrat;
-   font-size: 40px;
+   font-size: 2em;
    font-style: normal;
    font-weight: 700;
    
 }
+.productImage {
+   margin-left:220px ;
+   margin-top: -30em;
+ width: 50%;
+  max-height: 572px;
+  z-index: -1;
+height:auto;
+   object-fit: cover;
+   border-radius: 0.3em;
+   background-color: lightgray;
+ }
+   .photoContainer{
+  
+    display: grid;
+   grid-template-rows: repeat(3, 1fr); 
+   gap: 1em;  
+ }  
+
+ .price_product{
+width: 100%;
+max-height: 574px;
+ }
+ .productInfo {
+   width: 100%;
+box-sizing: border-box;
+ }
+ .info_dicount{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 1em;
+
+
+ }
+ .productInfo_price{
+   font-size: 2em;
+   font-style: normal;
+font-weight: 700;
+ }
+   .discount{
+      margin-top: 2px;
+      font-family: Montserrat;
+    font-size: 15px; 
+    }
+ .discountOverlay {
+   margin-top: -1em;
+ margin-left: 10em;
+   width: 57px;
+   height: 28px;
+   position: absolute;
+   background-color: #339933; 
+   color: #FFFFFF;
+font-family: Montserrat;
+font-size: 15px;
+text-align: center;
+ }
+ .buttonContainer{
+display: flex;
+
+ }
+ .button_quantity{
+   border-radius: 6px;
+   border: 1px solid #DDD;
+   display: flex;
+width: 58px;
+height: 58px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size:24px ;
+color:#8B8B8B;
+   
+ }
+ .quantity{
+   display: flex;
+   width: 96px;
+   height: 58px;
+   border-top: 1px solid  #DDD;
+border-bottom: 1px solid  #DDD;
+color: #282828;
+text-align: center;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
+ .addCart{
+   margin-left: 2em;
+   display: flex;
+max-width: 316px;
+padding: 16px 32px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 6px;
+background:  #393;
+color:  #FFF;
+text-align: center;
+font-family: Montserrat;
+font-size: 1em;
+font-style: normal;
+font-weight: 600;
+ }
+
+ .productInfo_price_discounted {
+   color: #8B8B8B;
+   font-family: Montserrat;
+   font-size: 2em;
+   font-style: normal;
+   text-decoration: line-through;
+    
+ }
+ .productImage_small{
+max-width:200px ;
+max-height: 180px;
+ }
+ @media screen and (max-width: 1024px) {
+  
+   
+   .productImage{
+      display: none;
+   }
+}
+ .discription_title{
+ color:  #282828;
+font-family: Montserrat;
+font-size: 1.5em;
+font-style: normal;
+font-weight: 600;
+ }
+ .discription_text{
+   max-width: 547px;
+   max-height:227px;
+   overflow: hidden;
+   color: #282828;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   font-family: Montserrat;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 400;
+ }
+ @media (max-width: 1024px) {
+   .productContainer {
+      font-size: 1em;
+     gap: 2em;
+   }
+ 
+   .discountOverlay {
+     margin-left: 0; 
+   }
+ }
+ 
+ @media (max-width: 768px) {
+   .productContainer {
+     flex-direction: column;
+     align-items: flex-start;
+   }
+ }
+ 
+ @media (max-width: 400px) {
+   .productContainer {
+     margin-top: 2em; 
+   }
+ }

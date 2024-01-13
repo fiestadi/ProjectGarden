@@ -1,19 +1,23 @@
 import React from 'react';
 import { useEffect } from 'react';
 // import styles from './product.module.css';
-import ProductItem from '../ProductsPage/products/pdoducts';
+import ProductItem from './products/products';
 import { useDispatch,useSelector} from 'react-redux';
 import styles from './product.module.css';
 import { fetchProducts } from '../../store/slices/productSlice';
-import { useParams } from 'react-router-dom';
 const ProductsPage = () => {
-  const { categoryTitle, categoryID, sales } = useParams()
+  
     const dispatch = useDispatch()
   
    
     useEffect(() => {
         dispatch(fetchProducts());
       }, [dispatch]);
+
+      useEffect(() => {
+        document.title = "All Products"
+    },[]);
+    
      
       const products = useSelector(state => state.products.data)
     return (

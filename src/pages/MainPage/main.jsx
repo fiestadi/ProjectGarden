@@ -12,7 +12,9 @@ import { fetchCategories } from '../../store/slices/categoriesSlice';
 const MainPage = () => {
   const dispatch = useDispatch();
   const { list } = useSelector(state => state.categories);
-
+  useEffect(() => {
+    document.title = "Main Page"
+},[])
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
