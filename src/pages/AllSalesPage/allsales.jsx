@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductsWithDiscount } from '../../store/slices/singleProductSlice';
 import ProductItem from '../ProductsPage/productsItem/products';
 import styles from './allsels.module.css';
+import Filter from '../../components/filter/filter';
 
 const DiscountedProductsPage = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const DiscountedProductsPage = () => {
   return (
     <div className={styles.discont_container}>
       <p className={styles.title}>Discounted items</p>
+      <Filter />
       <div className={styles.productContainer}>
       <div className={styles.productContainer}>
       <div className={styles.productList}>

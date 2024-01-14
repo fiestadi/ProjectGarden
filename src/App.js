@@ -13,6 +13,7 @@ import SinglePage from './pages/SingleProductPage/singlePage';
 // import Section from './hook/useParams/section';
 import NotFoundPage from './pages/NotFoundPage/404';
 import CategoryList from './components/categoryList/categoryList';
+import BasketPage from './pages/BacketPage/basket';
 function App() {
   const dispatch = useDispatch()
   
@@ -32,6 +33,7 @@ function App() {
           <Route path="/allproducts" element={<AllProducts/>} />
           <Route path="/allsales" element={<Allsales />} />
           <Route path="/product/:id" element={<SinglePage/>}/>
+          <Route path='/basket' element={<BasketPage/>}/>
           <Route path='*' element={<NotFoundPage/>}/>
         </Routes>
         <Footer />

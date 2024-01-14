@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ProductItem from '../../pages/ProductsPage/productsItem/products';
 import styles from './categoryList.module.css'
-
+import Filter from '../filter/filter';
 const CategoryList = () => {
   const { id } = useParams();
   const [categoryData, setCategoryData] = useState(null);
@@ -49,7 +49,10 @@ const CategoryList = () => {
   return (
     <div>
        <p className={styles.title}>{categoryData.category.title}</p>
+
+
        <div className={styles.productWrapper}>
+        <Filter />
        <div className={styles.productContainer}>
     {categoryData.data.map((product) => (
       <ProductItem key={product.id} item={product} />

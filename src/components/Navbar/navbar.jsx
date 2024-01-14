@@ -3,6 +3,7 @@ import styles from './navbar.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import busket from '../assets/basket_empty.png';
+import BasketPage from '../../pages/BacketPage/basket';
 const Navbar = () => {
   const location = useLocation(); // hook dlia videlenia aktivnoj stranici
    return (
@@ -32,7 +33,9 @@ const Navbar = () => {
          </li>
        </ul>
        <div className={styles.busket}>
-        <img src={busket} alt="basket" />
+       <Link to="/basket">
+      <img src={busket} alt="basket" />
+   </Link>
       </div>
       </div>
      </nav>
