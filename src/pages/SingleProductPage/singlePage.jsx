@@ -15,9 +15,13 @@ const SingleProductPage = () => {
    }, [dispatch, id])
 
    const product = useSelector((state) => state.product); 
+   
 
    const { title, description, discont_price, price, image } = product.item && product.item.length > 0 ? product.item[0] : {};
-   const discountedPrice = price - (price * discont_price / 100).toFixed(1);
+   const discountedPrice = discont_price > 0
+    ? (price - (price * discont_price / 100)).toFixed(2)
+    : null;
+
 // logika na max i min tovara
 const increaseQuantity = () => {
    setQuantity((prevQuantity) => prevQuantity + 1);
@@ -47,13 +51,26 @@ const increaseQuantity = () => {
                   <p className={styles.productTitle}>{title}</p>
                  <div className={styles.info_dicount}>
                  {discont_price > 0 && (
-    <div className={styles.discountOverlay}>
-      <p className={styles.discount}>-{discont_price}%</p>
-    </div>
-  )}
-                 <p className={styles.productInfo_price}>${price}</p>
-                <p className={styles.productInfo_price_discounted}>{discountedPrice}</p> 
-              </div> 
+              <div className={styles.discountOverlay}>
+                <p className={styles.discount}>-{discont_price}%</p>
+              </div>
+            )}
+            {discountedPrice !== null && (
+              <>
+                <p className={styles.productInfo_price_discounted}>
+                  ${discountedPrice}
+                </p>
+                {price !== null && (
+                  <p className={styles.productInfo_price}> ${price}</p>
+                )}
+              </>
+            )}
+            {discountedPrice === null && price !== null && (
+              <p className={styles.productInfo_price_no_discount}>
+                ${price}
+              </p>
+            )}
+          </div>
               <div className={styles.buttonContainer}>
             <button className={styles.button_quantity} onClick={decreaseQuantity}>-</button>
             <span className={styles.quantity}>{quantity}</span>
@@ -62,6 +79,8 @@ const increaseQuantity = () => {
                     </div>
                    <div>
                       <p className={styles.discription_title}>Description</p>
+                      </div>
+                      <div>
                       <p className={styles.discription_text}>{description}</p>
                     </div>
                   </div>

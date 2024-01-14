@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useRef} from 'react';
 import { Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './main.module.css';
@@ -12,13 +12,18 @@ import { fetchCategories } from '../../store/slices/categoriesSlice';
 const MainPage = () => {
   const dispatch = useDispatch();
   const { list } = useSelector(state => state.categories);
+  const categoriesRef = useRef(null);
+
   useEffect(() => {
     document.title = "Main Page"
-},[])
+},[]);
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
-  
+  const handleButtonClick = () => {
+    // Scroll 
+    categoriesRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <main>
       <div className={styles['home-container']}>
@@ -28,7 +33,7 @@ const MainPage = () => {
         <img src={headerImg} alt="#" className={styles['header-image']} />
         <div className={styles['header-content']}>
           <h2>Amazing Discounts on Garden Products!</h2>
-          <button className={styles['header-button']} >
+          <button className={styles['header-button']} onClick={handleButtonClick} >
               Check out
             </button>
 
@@ -37,7 +42,7 @@ const MainPage = () => {
 
       {/* image-gallery */}
       <div className={styles['gallery_container']}>
-        <div className={styles['categories-container']}>
+        <div className={styles['categories-container']}ref={categoriesRef}>
           <p id="categories"  className={styles.paragraph}>Categories</p>
 
           <div className={styles['line']}></div>

@@ -1,0 +1,48 @@
+.button {
+  margin-left: -7px;
+   margin-top: -81px;
+   color: #FFF;
+   text-align: center;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+   cursor: pointer;
+   display: flex;
+width: 284px;
+padding: 16px 32px;
+justify-content: center;
+align-items: center;
+position: absolute;
+left: 16px;
+border-radius:  6px;
+background: #393;
+z-index: 2;
+}
+ 
+ .normal:hover {
+   background-color: darkgreen;
+ }
+ 
+ .active {
+   background-color: black;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   cursor: pointer;
+ }
+ 
+ .active:hover {
+   background-color: darkgray;
+ }
+ .productItem {
+   width: 100%;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   text-decoration: none;
+   position: relative;
+   box-sizing: border-box;
+   overflow: hidden;
+ }
+ 
+ 

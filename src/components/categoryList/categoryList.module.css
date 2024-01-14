@@ -1,0 +1,35 @@
+.title {
+   color:  #282828;
+font-family: Montserrat;
+font-size: 64px;
+font-style: normal;
+font-weight: 700;
+margin-left: 0.6em;
+ }
+ .productContainer {
+   display: flex;
+ flex-wrap: wrap;
+   gap: 36px;
+   margin-left: 2.5em;
+  
+ }
+ 
+ .productItem {
+   width:100%;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   text-decoration: none;
+   position: relative;
+   box-sizing: border-box; 
+ }
+ 
+ 
+ 
+      
+    
+   
+   
+   
+  
+   
+ 

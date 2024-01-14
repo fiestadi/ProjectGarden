@@ -27,7 +27,6 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          {/* <Route path="/section/:sectionId" element={<Section />} /> */}
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path='/categories/:categoryTitle/:id' element={<CategoryList/>}/>
           <Route path="/allproducts" element={<AllProducts/>} />

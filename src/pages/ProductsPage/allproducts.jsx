@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 // import styles from './product.module.css';
-import ProductItem from './products/products';
+import ProductItem from './productsItem/products';
 import { useDispatch,useSelector} from 'react-redux';
 import styles from './product.module.css';
 import { fetchProducts } from '../../store/slices/productSlice';
