@@ -66,10 +66,38 @@ height:26px ;
   top: 41px;
   margin-right: 2.5em;
 }
+.basket_counter{
+  position: relative;
+ top: -49px;
+ border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    background-color:#339933 ;
+    color: #ffff;
+    text-align: center;
+    font-size: 0.8em;
+    z-index: 999;
+    @media screen and (max-width: 768px) {
+      width: 14px;
+      height: 14px;
+      top: -24px;
+    }
+ }
+ .no-quantity::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: red; 
+  border-radius: 50%;
+ }
 
 .busket img {
-  width: 48px;
-  height: 48px;
+  margin-top: 1em;
+  width: 52px;
+  height: 52px;
 
   @media screen and (max-width: 768px) {
     width: 24px;

@@ -45,13 +45,14 @@ const MainPage = () => {
         <div className={styles['categories-container']}ref={categoriesRef}>
           <p id="categories"  className={styles.paragraph}>Categories</p>
 
-          <div className={styles['line']}></div>
-        </div>
+         <span className={styles.line}></span>
+     
 
         {/* Categories button */}
         <Link to="/categories" className={styles.all_categories_button}>
             All Categories
           </Link>
+          </div>
           </div>
           <div className={styles.categories}>
                 {
@@ -63,6 +64,13 @@ const MainPage = () => {
 </p>
     <DiscountForm />
   </div>
+  <div className={styles.content_sales}>
+  <p className={styles.saleTitle}>Sale</p>
+  <span className={styles.line_sale}></span>
+  <Link to="/allsales" className={styles.all_sales_button}>
+            All sales
+          </Link>
+          </div>
   </div>
 </main> 
   );

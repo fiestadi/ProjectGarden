@@ -43,13 +43,13 @@ export const productsSlice = createSlice({
         filterDiscount: (state, { payload }) => {
             if (payload) {
                 state.data = state.data.map(elem => {
-                    if (elem.discount_price == null) {
+                    if (elem.discont_price == null) {
                         elem.discount = false
                     }
                     return elem
                 })
             } else {
-                state.data = state.data.map(elem => ({ ...elem, discount: true }))
+                state.data = state.data.map(elem => ({ ...elem, discont: true }))
             }
         },
         resetFilter: (state) => {

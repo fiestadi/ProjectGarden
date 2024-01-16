@@ -40,7 +40,7 @@ const onSubmit = async (data) => {
       const contentType = response.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const responseData = await response.json();
-        console.log('Server response:', responseData);
+       
     } else {
       console.error('Server response is not in JSON format.');
     }

@@ -1,86 +1,99 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { URL } from '../../components/URL/url';
+import { createSlice } from '@reduxjs/toolkit';
+const calculateTotalSumm = (list) => {
+	return list.reduce((total, item) => {
+	  const itemPrice = item.discont_price || item.price;
+	  return total + itemPrice * item.amount;
+	}, 0).toFixed(2);
+ };
+ const updateLocalStorage = (list, amount) => {
+	const totalSumm = calculateTotalSumm(list);
+ 
+	const data = {
+	  BasketList: list,
+	  totalAmount: amount,
+	  totalSumm: +totalSumm,
+	};
+ 
+	localStorage.setItem('basket', JSON.stringify(data));
+ };
+ 
+ const localStorageData = JSON.parse(localStorage.getItem('basket'));
+ 
+ const BasketSlice = createSlice({
+	name: 'basket',
+ 
+	initialState: {
+	  BasketList: localStorageData?.BasketList || [],
+	  totalAmount: localStorageData?.totalAmount >= 0 ? +localStorageData.totalAmount : 0,
+	  totalSumm: localStorageData?.totalSumm >= 0 ? +localStorageData.totalSumm : 0,
+	},
+ 
+	reducers: {
+	  addProductToCart(state, action) {
+		 state.totalAmount += 1;
+		 const tempTotalSumm =
+			state.totalSumm +
+			(action.payload.discont_price || action.payload.price);
+		 state.totalSumm = +tempTotalSumm.toFixed(2);
+ 
+		 const index = state.BasketList.findIndex(
+			(item) => item.id === action.payload.id
+		 );
+		 if (index === -1) {
+			state.BasketList.unshift({ ...action.payload, amount: 1 });
+		 } else {
+			state.BasketList[index].amount += 1;
+		 }
+		 updateLocalStorage(state.BasketList, state.totalAmount);
+	  },
+ 
 
-const defaultState = JSON.parse(localStorage.getItem('basket')) ?? []
+		decrementProductInCart(state, action) {
+			const tempProduct = state.BasketList.find(
+				(item) => action.payload === item.id
+			);
 
-const writeToLocalStorage = (basket) => localStorage.setItem('basket', JSON.stringify(basket))
+			tempProduct.amount = tempProduct.amount - 1;
+			state.totalAmount = state.totalAmount - 1;
+			const decrTotalSumm =
+				state.totalSumm - (tempProduct.discont_price || tempProduct.price);
+			state.totalSumm = +decrTotalSumm.toFixed(2);
+			state.BasketList = state.BasketList.filter((item) => item.amount !== 0);
+			updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
+		},
 
+		removeProductFromCartById(state, action) {
+			const tempUnit = state.BasketList.find((el) => action.payload === el.id);
 
-export const fetchBasketOrder = createAsyncThunk(
-    'basket/fetchBasketOrder',
-    async (order, { rejectWithValue, dispatch }) => {
-        try {
-            const response = await fetch(`${URL}/order/send`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(order)
-            })
-            if (!response.ok) {
-                throw new Error(`An error has occured`)
-            }
-            const data = await response.json()
-            dispatch(clear())
-            return data
-        } catch (error) {
-            return rejectWithValue(error.message)
-        }
+			const targetSumm =
+				state.totalSumm -
+				(tempUnit.discont_price || tempUnit.price) * tempUnit.amount;
+			state.totalSumm = +targetSumm.toFixed(2);
 
-    }
-)
+			state.totalAmount = state.totalAmount - tempUnit.amount;
+			tempUnit.amount = 0;
 
-export const basketSlice = createSlice({
-    name: 'basket',
-    initialState: {
-        data: defaultState
-    },
-    reducers: {
-        addToBasket: (state, action) => {
-            const product = state.data.find(({ id }) => id === action.payload)
-            if (product) {
-                product.count++
-            } else {
-                state.data.push({ id: action.payload, count: 1 })
-            }
-            writeToLocalStorage(state.data)
-        },
-        increment: (state, action) => {
-            state.data.find(({ id }) => id === action.payload).count++
-            writeToLocalStorage(state.data)
-        },
-        decrement: (state, action) => {
-            const target = state.data.find(({ id }) => id === action.payload)
-            target.count--
-            if (target.count === 0) {
-                state.data = state.data.filter(el => el !== target)
-            }
-            writeToLocalStorage(state.data)
-        },
-        remove: (state, action) => {
-            state.data = state.data.filter(({ id }) => id !== action.payload)
-            writeToLocalStorage(state.data)
-        },
-        clear: (state) => {
-            state.data = []
-            writeToLocalStorage(state.data)
-        }
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchBasketOrder.pending, (state) => {
-                state.status = 'loading'
-            })
-            .addCase(fetchBasketOrder.fulfilled, (state) => {
-                state.status = 'resolve'
-            })
-            .addCase(fetchBasketOrder.rejected, (state, { payload }) => {
-                state.status = 'rejected'
-                state.error = payload
-            })
-    }
-})
+			state.BasketList = state.BasketList.filter(
+				(product) => product.id !== action.payload
+			);
+			updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
+		},
 
-export const { addToBasket, increment, decrement, remove, clear } = basketSlice.actions
+		removeAllProductsFromCart(state) {
+			state.BasketList = [];
+			state.totalAmount = 0;
+			state.totalSumm = 0;
 
-export default basketSlice.reducer
+			updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
+		},
+	},
+});
+
+export const {
+	addProductToCart,
+	decrementProductInCart,
+	removeProductFromCartById,
+	removeAllProductsFromCart,
+} = BasketSlice.actions;
+export default BasketSlice.reducer;
+ 

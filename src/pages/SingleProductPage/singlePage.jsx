@@ -2,37 +2,55 @@ import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './singlePage.module.css';
 import { useParams } from 'react-router-dom';
+import {addProductToCart} from '../../store/slices/basketSlice';
 import { fetchSingleProduct } from '../../store/slices/singleProductSlice';
 import { URL } from '../../components/URL/url';
 
 
+
 const SingleProductPage = () => {
-   const { id } = useParams()
-   const dispatch = useDispatch()
-   const [quantity, setQuantity] = useState(0);
-   useEffect(() => {
-      dispatch(fetchSingleProduct(id))
-   }, [dispatch, id])
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(0);
+  const [addedToCart, setAddedToCart] = useState(false); 
 
-   const product = useSelector((state) => state.product); 
-   
+  useEffect(() => {
+    dispatch(fetchSingleProduct(id));
+  }, [id, dispatch]);
 
-   const { title, description, discont_price, price, image } = product.item && product.item.length > 0 ? product.item[0] : {};
-   const discountedPrice = discont_price > 0
+  const handleAddToCart = () => {
+    const { title, image, price, discont_price} = product.item && product.item.length > 0 ? product.item[0] : {};
+
+    dispatch(addProductToCart({ id, image, title, price, discont_price }));
+    setAddedToCart(true); 
+  };
+
+  const product = useSelector((state) => state.product);
+  const { title, description, discont_price, price, image } = product.item && product.item.length > 0 ? product.item[0] : {};
+ 
+  const discountedPrice = discont_price > 0
     ? (price - (price * discont_price / 100)).toFixed(2)
     : null;
+    
+  const increQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
 
-// logika na max i min tovara
-const increaseQuantity = () => {
-   setQuantity((prevQuantity) => prevQuantity + 1);
- };
+  const decreQuantity = () => {
+    setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 0));
+  };
 
- const decreaseQuantity = () => {
-   setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 0));
- };
-   useEffect(() => {
-      document.title = `Product: ${title}`
-   }, [title])
+  useEffect(() => {
+    document.title = `Product: ${title}`;
+  }, [title]);
+  useEffect(() => {
+    
+    if (addedToCart) {
+      setAddedToCart(false);
+      setQuantity(0); 
+    }
+  }, [addedToCart]);
+
 // dostup k zagolovku 
 
    return (
@@ -72,10 +90,10 @@ const increaseQuantity = () => {
             )}
           </div>
               <div className={styles.buttonContainer}>
-            <button className={styles.button_quantity} onClick={decreaseQuantity}>-</button>
+            <button className={styles.button_quantity} onClick={decreQuantity}>-</button>
             <span className={styles.quantity}>{quantity}</span>
-            <button className={styles.button_quantity} onClick={increaseQuantity}>+</button>
-                      <button className={styles.addCart}>Add to cart</button>
+            <button className={styles.button_quantity} onClick={increQuantity}>+</button>
+            <button  type='To cart' className={styles.addCart}onClick={handleAddToCart}>Add to cart </button>
                     </div>
                    <div>
                       <p className={styles.discription_title}>Description</p>

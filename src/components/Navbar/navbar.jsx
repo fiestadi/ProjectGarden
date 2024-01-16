@@ -3,9 +3,12 @@ import styles from './navbar.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import busket from '../assets/basket_empty.png';
-import BasketPage from '../../pages/BacketPage/basket';
+import BasketCounter from '../basketCounter/basketCounter';
+import { useSelector } from 'react-redux';
+
 const Navbar = () => {
   const location = useLocation(); // hook dlia videlenia aktivnoj stranici
+  const cartQuantity = useSelector((state) => state.basket.totalAmount);
    return (
      <nav className={styles.navbar}>
       <div className={styles.container}>
@@ -36,6 +39,9 @@ const Navbar = () => {
        <Link to="/basket">
       <img src={busket} alt="basket" />
    </Link>
+   <div className={`${styles.basket_counter}${cartQuantity > 0 ? '' : styles['no-quantity']}`}>
+         <BasketCounter quantity={cartQuantity} />
+         </div>
       </div>
       </div>
      </nav>

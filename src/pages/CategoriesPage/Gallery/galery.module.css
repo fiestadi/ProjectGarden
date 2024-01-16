@@ -32,6 +32,6 @@
 }
 @media (max-width: 768px) {
   .item img {
-    height: 200px;
+    height: 150px;
   }
 }

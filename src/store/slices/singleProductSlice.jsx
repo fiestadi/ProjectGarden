@@ -4,6 +4,7 @@ import { URL } from '../../components/URL/url';
 export const fetchSingleProduct = createAsyncThunk(
     'product/fetchSingleProduct',
     async (id, { rejectWithValue }) => {
+
         try {
             const res = await fetch(`${URL}/products/${id}`)
             if (!res.ok) {
@@ -12,7 +13,8 @@ export const fetchSingleProduct = createAsyncThunk(
             const product = await res.json()
             return product
         } catch (error) {
-            rejectWithValue(error.message)
+
+             rejectWithValue(error.message)
         }
 
     }

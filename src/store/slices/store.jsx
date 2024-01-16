@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import categoriesReducer from './categoriesSlice';
 import productsReducer from './productSlice';
 import singleProductReducer from './singleProductSlice';
-import basketReducer from './basketSlice';
+import basketReducer from '../slices/basketSlice';
 
 export const store = configureStore({
     reducer: {

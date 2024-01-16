@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { URL } from '../../../components/URL/url';
 import styles from './productItem.module.css';
 import ButtonCard from '../../../components/buttonCard/buttonCard';
-import { productsSlice } from '../../../store/slices/productSlice';
+
 const ProductItem = ({ item }) => {
     const link = `/product/${item.id}`;
     const discountedPrice = item.discont_price
@@ -29,7 +29,7 @@ const ProductItem = ({ item }) => {
                 <div className={`${styles.buttonContainer} buttonContainer`}>
            <ButtonCard
             onClick={addToCartHandler}
-            label={isAddedToCart ? 'Remove from Cart' : 'Add to Cart'}
+            label={isAddedToCart ? 'Add to Cart' : 'Add to Cart'}
             isActive={isAddedToCart}
           />
         </div> 
