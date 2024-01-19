@@ -23,41 +23,44 @@ const calculateTotalSumm = (list) => {
 	name: 'basket',
  
 	initialState: {
-	  BasketList: localStorageData?.BasketList || [],
-	  totalAmount: localStorageData?.totalAmount >= 0 ? +localStorageData.totalAmount : 0,
-	  totalSumm: localStorageData?.totalSumm >= 0 ? +localStorageData.totalSumm : 0,
+		BasketList: localStorageData.BasketList || [],
+  totalAmount: +localStorageData.totalAmount || 0,
+  totalSumm: +localStorageData.totalSumm || 0,
+
+	//   BasketList: localStorageData?.BasketList || [],
+	//   totalAmount: localStorageData?.totalAmount >= 0 ? +localStorageData.totalAmount : 0,
+	//   totalSumm: localStorageData?.totalSumm >= 0 ? +localStorageData.totalSumm : 0,
 	},
  
 	reducers: {
 	  addProductToCart(state, action) {
 		 state.totalAmount += 1;
-		 const tempTotalSumm =
-			state.totalSumm +
-			(action.payload.discont_price || action.payload.price);
-		 state.totalSumm = +tempTotalSumm.toFixed(2);
- 
-		 const index = state.BasketList.findIndex(
-			(item) => item.id === action.payload.id
-		 );
-		 if (index === -1) {
-			state.BasketList.unshift({ ...action.payload, amount: 1 });
-		 } else {
-			state.BasketList[index].amount += 1;
-		 }
-		 updateLocalStorage(state.BasketList, state.totalAmount);
-	  },
- 
+		 const itemPrice = action.payload.discont_price || action.payload.price;
+  const tempTotalSumm = state.totalSumm + itemPrice;
+  state.totalSumm = +tempTotalSumm.toFixed(2);
 
-		decrementProductInCart(state, action) {
+  const index = state.BasketList.findIndex(
+    (item) => item.id === action.payload.id
+  );
+  if (index === -1) {
+    state.BasketList.unshift({ ...action.payload, amount: 1 });
+  } else {
+    state.BasketList[index].amount += 1;
+  }
+  updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
+},
+	
+decrementProductInCart(state, action) {
 			const tempProduct = state.BasketList.find(
 				(item) => action.payload === item.id
 			);
-
+			if (tempProduct.amount > 0){
 			tempProduct.amount = tempProduct.amount - 1;
 			state.totalAmount = state.totalAmount - 1;
 			const decrTotalSumm =
 				state.totalSumm - (tempProduct.discont_price || tempProduct.price);
 			state.totalSumm = +decrTotalSumm.toFixed(2);
+			}
 			state.BasketList = state.BasketList.filter((item) => item.amount !== 0);
 			updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
 		},

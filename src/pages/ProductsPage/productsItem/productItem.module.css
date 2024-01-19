@@ -1,10 +1,10 @@
 .productContainer {
-  max-width: 300px;
+width: 100%;
   max-height: 484px;
 align-items: center;
 display: flex;
 flex-direction: column;
-gap: 20px;
+gap: 10px;
 }
  .discountOverlay {
    width: 57px;
@@ -30,6 +30,10 @@ max-width: 300px;
     overflow: hidden;
   
  } 
+a{
+  text-decoration: none;
+  font-family: Montserrat;
+}
 .productImage {
 width: 100%;
    max-height: 264px;

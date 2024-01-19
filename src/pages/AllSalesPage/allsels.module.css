@@ -6,22 +6,21 @@ font-family: Montserrat;
 font-size: 64px;
 font-style: normal;
 font-weight: 700;
-
- } 
- .productList {
-   align-items: center;
-   display: flex; 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 10px; 
-   position: relative;
-  width: 100%;
-
  }
- .productContainer {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  }
 
+  .productList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 30px;
+  }
+  
+  .productItem {
+   
+    width: 24%; 
+    margin-bottom: 26px; 
+  } 
+ .productContainer{
+  width: 100%;
+  max-height:422px ;
+ }

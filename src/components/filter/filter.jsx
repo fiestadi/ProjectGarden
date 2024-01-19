@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styles from './filter.module.css';
 import { useDispatch } from 'react-redux';
 import {  useLocation, useParams } from 'react-router-dom';
-import CheckboxComponent from '../Checkbox/checkbox';
+
 import { searchByPrice, sort, filterDiscount, resetFilter } from '../../store/slices/productSlice';
+import CheckboxComponent from '../Checkbox/checkbox';
 
 const Filter = () => {
     const initialFilters = {from: 0, to: Infinity}
     const [price, setPrice] = useState(initialFilters)
     const [discount, setDiscount] = useState(false)
-    const {sales} = useParams()
+    const {allsales} = useParams()
     const dispatch = useDispatch()
     const location = useLocation()
-
+    const [showDiscountedProducts, setShowDiscountedProducts] = useState(false);
     useEffect(()=>{
       if (!discount) {
          dispatch(filterDiscount(false));
@@ -33,14 +34,21 @@ const Filter = () => {
             [by]:data
         })
     }
-    const onChangeDiscount = (e) => {
-        setDiscount(e.target.checked)
-        dispatch(filterDiscount(e.target.checked))
-    }
+  
     const onChangeSort = (e) => {
+        console.log("Selected sort value:", e.target.value);
         dispatch(sort(+e.target.value))
     }
-
+    const handleCheckboxChange = (isChecked) => {
+        setShowDiscountedProducts(isChecked);
+      };
+    
+      useEffect(() => {
+        
+        if (showDiscountedProducts) {
+            
+        }
+      }, [showDiscountedProducts]);
     return (
         <form className={styles.filterForm}>
             <div className={styles.inputs_price}>
@@ -61,11 +69,10 @@ const Filter = () => {
                     value={price.to === Infinity ? '' : price.to}
                     />
             </div>
-            {   
-                !sales && (
+            {allsales !== true && (
                     <div className={styles.checkbox}>
                         <span className={styles.label}>Discounted items</span>
-                        <CheckboxComponent />
+                        <CheckboxComponent onCheckboxChange={handleCheckboxChange}/>
                     </div> 
                 )
             }

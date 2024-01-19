@@ -62,7 +62,8 @@
 }
 
 .gallery_container {
-  max-height: 3642px;
+  max-width: 100%;
+  max-height: auto;
   display: flex;
   justify-content: space-between;
  
@@ -103,21 +104,21 @@
   
 }
 .content_sales{
- width: 100%;
-  margin-top: 3em;
-  width: 100%;
+  padding: 0  40px;
+  margin-top: 4em; 
+  max-width: 1360px;
+  height: auto;
   display: flex;
-  padding: 40px;
-  justify-content: space-between;
   align-items: center;
+  
 }
 .all_sales_button{
-  margin-right: 70px;
+
   max-width: 97px;
   max-height: 36px;
   display: flex;
   padding: 8px 16px;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   border-radius: 6px;
 border: 1px solid #DDD;
@@ -147,6 +148,7 @@ font-weight: 500;
   justify-content: flex-end;
   padding: 8px 16px;
   justify-content: center;
+  width: 100%;
   max-width: 142px;
   max-height: 36px;
   border-radius: 6px;
@@ -168,7 +170,10 @@ font-weight: 500;
   font-style: normal;
   font-weight: 700;
 }
-
+.discountFor_discountImage{
+  max-width: 100%;
+  height: auto;
+}
 .background_container {
   margin-top: 20px;
   margin-left: 35px;
@@ -176,4 +181,11 @@ font-weight: 500;
   max-height: 480px;
   background: linear-gradient(261deg, #0B710B 32.63%, #393 98.96%);
   border-radius: 12px;
+}
+.products_on_sale {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: auto;
+  gap: 25px;
 }

@@ -37,9 +37,10 @@ export const fetchProductsWithDiscount = createAsyncThunk(
   );
   
 export const singleProductSlice = createSlice({
-    name: 'item',
+   
+   name: 'item',
     initialState: {
-        item: {}
+        item: {} 
     },
     reducers: {},
     extraReducers: (builder) => {

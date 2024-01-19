@@ -10,10 +10,10 @@ import { fetchProducts } from './store/slices/productSlice';
 import { useDispatch } from 'react-redux';
 import Footer from './components/Footer/footer';
 import SinglePage from './pages/SingleProductPage/singlePage';
-// import Section from './hook/useParams/section';
 import NotFoundPage from './pages/NotFoundPage/404';
 import CategoryList from './components/categoryList/categoryList';
 import BasketPage from './pages/BacketPage/basket';
+
 function App() {
   const dispatch = useDispatch()
   
@@ -32,7 +32,7 @@ function App() {
           <Route path='/categories/:categoryTitle/:id' element={<CategoryList/>}/>
           <Route path="/allproducts" element={<AllProducts/>} />
           <Route path="/allsales" element={<Allsales />} />
-          <Route path="/product/:id" element={<SinglePage/>}/>
+         <Route path="/product/:id" element={<SinglePage/>}/>
           <Route path='/basket' element={<BasketPage/>}/>
           <Route path='*' element={<NotFoundPage/>}/>
         </Routes>

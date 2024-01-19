@@ -1,6 +1,9 @@
+.buttonContainer{
+  width: 100%;
+
+}
 .button {
-  margin-left: -7px;
-   margin-top: -81px;
+ margin-top: -51px;
    color: #FFF;
    text-align: center;
 font-family: Montserrat;
@@ -9,7 +12,8 @@ font-style: normal;
 font-weight: 600;
    cursor: pointer;
    display: flex;
-width: 284px;
+width: 90%;
+max-height: 50px;
 padding: 16px 32px;
 justify-content: center;
 align-items: center;
@@ -18,23 +22,31 @@ left: 16px;
 border-radius:  6px;
 background: #393;
 z-index: 2;
+overflow: hidden;
 }
- 
- .normal:hover {
-   background-color: darkgreen;
- }
- 
- .active {
-   background-color: black;
+.active{
+  padding: 16px 32px;
+justify-content: center;
+align-items: center;
+position: absolute;
+left: 16px;
+border-radius:  6px;
+  font-size: 20px;
+font-style: normal;
+font-weight: 600;
+   cursor: pointer;
+   display: flex;
+width: 90%;
+max-height: 50px;
+  margin-top: -51px;
+  z-index: 2;
+   background: #282828;
    color: white;
    border: none;
    padding: 10px 20px;
    cursor: pointer;
  }
  
- .active:hover {
-   background-color: darkgray;
- }
  .productItem {
    width: 100%;
    border: 1px solid #ddd;
@@ -43,6 +55,6 @@ z-index: 2;
    position: relative;
    box-sizing: border-box;
    overflow: hidden;
- }
+ } 
  
  

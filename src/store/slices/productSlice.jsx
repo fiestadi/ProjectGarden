@@ -22,11 +22,25 @@ export const fetchProducts = createAsyncThunk(
 
     }
 )
+export const fetchAllProductsList = (type) => {
+	return function (dispatch) {
+		fetch(`${URL}/products/all`)
+			.then((res) => res.json())
+			.then((data) => {
+				dispatch(addProductsList({ data, category: {} }));
+				if (type === 'sale') {
+					dispatch(addProductsListWhithSale());
+				}
+			});
+            
+	};
+};
 export const productsSlice = createSlice({
     name: 'products',
     initialState: {
         data: [],
     },
+    
     reducers: {
         sort: (state, { payload }) => {
             state.data.sort((a, b) => {
@@ -34,6 +48,29 @@ export const productsSlice = createSlice({
                 return sortOrder * (a.finalPrice - b.finalPrice);
             })
         },
+        addProductsListWhithSale(state) {
+			
+			state.productslist = state.productslist.filter(
+				(product) => product.discont_price
+			);
+		},
+        addProductsList(state, action) {
+			if (action.payload.category.title) {
+				state.pageTitle = action.payload.category.title;
+				state.productslist = action.payload.data.map((product) => ({
+					...product,
+					rangeVisible: true,
+					discontVisible: true,
+				}));
+			} else {
+				state.pageTitle = { title: 'All products' };
+				state.productslist = action.payload.data.map((product) => ({
+					...product,
+					rangeVisible: true,
+					discontVisible: true,
+				}));
+			}
+		},
         searchByPrice: (state, { payload }) => {
             const { from, to } = payload
             state.data = state.data.map(el =>
@@ -73,5 +110,5 @@ export const productsSlice = createSlice({
             })
     }
 })
-export const { sort, searchByPrice, filterDiscount, resetFilter } = productsSlice.actions
+export const { sort, searchByPrice, filterDiscount, resetFilter,addProductsListWhithSale,addProductsList } = productsSlice.actions
 export default productsSlice.reducer

@@ -8,6 +8,7 @@ import { fetchProducts } from '../../store/slices/productSlice';
 import Filter from '../../components/filter/filter';
 
 
+
 const ProductsPage = () => {
   
     const dispatch = useDispatch()
@@ -16,25 +17,22 @@ const ProductsPage = () => {
     useEffect(() => {
         dispatch(fetchProducts());
       }, [dispatch]);
-
-      useEffect(() => {
-        document.title = "All Products"
-    },[]);
-    
+  
      
       const products = useSelector(state => state.products.data)
     return (
+      <>
       <div className={styles.allProduct_wrapper}>
       <p className={styles.allProduct_title}>All Products</p>
       <Filter />
-      
+      </div>
        <div className={styles.conteinerProducts} >
        
                 { 
                    products.map(el => <ProductItem key={el.id} item={el}/>)
                 }
             </div>
-            </div>
+            </>
     );
 };
 
