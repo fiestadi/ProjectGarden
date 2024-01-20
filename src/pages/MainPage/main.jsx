@@ -80,13 +80,13 @@ const MainPage = () => {
             All sales
           </Link>
         </div>
-        <div className={styles.products_on_sale}>
+        {/* <div className={styles.products_on_sale}>
         {product && (
     <Link to={`/products/${product.id}`}>
       <ProductItem item={product} />
     </Link>
   )}
-        </div>
+        </div> */}
         </div>
     </main>
     );

@@ -10,7 +10,7 @@ const DiscountedProductsPage = () => {
   const dispatch = useDispatch();
   const productsWithDiscount = useSelector((state) => state.products.data);
   useEffect(() => {
-    document.title = "All sales"
+    document.title = "All Sales"
 },[])
   useEffect(() => {
     dispatch(fetchProductsWithDiscount());

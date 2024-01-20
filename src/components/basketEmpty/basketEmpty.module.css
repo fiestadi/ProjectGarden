@@ -1,0 +1,29 @@
+.basketEmpty{
+   padding: 10px 40px;
+}
+
+.basketEmtyText{
+overflow: hidden;
+color:  #282828;
+text-overflow: ellipsis;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+}
+.shopping{
+   margin-top: 20px;
+   border-radius: 6px;
+   background: #393;
+   display: flex;
+padding: 16px 46px;
+justify-content: center;
+align-items: center; 
+color: #FFF;
+text-align: center;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+cursor: pointer;
+}

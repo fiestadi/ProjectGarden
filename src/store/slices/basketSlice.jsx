@@ -89,6 +89,12 @@ decrementProductInCart(state, action) {
 			setModalVisibility(state, action) {
 				state.isModalVisible = action.payload;
 		},
+		clearBasket(state) {
+			state.BasketList = [];
+			state.totalAmount = 0;
+			state.totalSumm = 0;
+			state.isModalVisible = false;
+		 },
 	},
 });
 
@@ -98,6 +104,7 @@ export const {
 	removeProductFromCartById,
 	removeAllProductsFromCart,
 	setModalVisibility,
+	clearBasket,
 } = BasketSlice.actions;
 export const selectIsModalVisible = (state) => state.basket.isModalVisible;
 export default BasketSlice.reducer;

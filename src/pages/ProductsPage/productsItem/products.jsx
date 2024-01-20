@@ -37,8 +37,10 @@ const ProductItem = ({ item }) => {
           isActive={isAddedToCart}
         />
       </div>
-      <Link to={link} className={styles.productInfo}>
+      <div className={styles.productInfo}>
+      <Link to={link} className={styles.productInfoLink}>
         <p className={styles.productInfo_title}>{item.title}</p>
+        </Link>
         <div className={styles.price_product}>
           {discountedPrice !== null && (
             <>
@@ -58,7 +60,7 @@ const ProductItem = ({ item }) => {
             </p>
           )}
         </div>
-      </Link>
+      </div>
     </div>
   );
 };
