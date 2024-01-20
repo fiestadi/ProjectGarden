@@ -1,18 +1,28 @@
-import React, { useEffect } from 'react';
+import React, {useEffect } from 'react';
 import styles from './basket.module.css'
 import BasketList from '../../components/basketList/basketList';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector } from 'react-redux';
+import { setModalVisibility,selectIsModalVisible } from '../../store/slices/basketSlice';
 import Order from '../../components/order/order';
+import  Modal  from '../../components/modal/modal';
+
 
 const BasketPage = () => {
-		
+	const dispatch = useDispatch();
+  const isModalVisible = useSelector(selectIsModalVisible);
+
+  const handleModalClose = () => {
+	dispatch(setModalVisibility(false));
+ };
+  	
 	const totalAmount = useSelector((state) => state.basket.totalAmount);
 	const totalSumm = useSelector((state) => state.basket.totalSumm);
+
 	useEffect(() => {
 		document.title = "Cart";
 	}, []);
-
+	
 	return (
 		<section>
 
@@ -33,7 +43,8 @@ const BasketPage = () => {
 <Order totalAmount={totalAmount} totalSumm={totalSumm} />
 </div>
 			</div>
-
+	
+			{isModalVisible && <Modal isVisible={isModalVisible} onClose={handleModalClose} />}
 
 
 		</section>

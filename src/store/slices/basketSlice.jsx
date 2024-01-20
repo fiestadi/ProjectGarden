@@ -26,6 +26,7 @@ const calculateTotalSumm = (list) => {
 		BasketList: localStorageData.BasketList || [],
   totalAmount: +localStorageData.totalAmount || 0,
   totalSumm: +localStorageData.totalSumm || 0,
+  isModalVisible: false,
 	},
  
 	reducers: {
@@ -85,6 +86,9 @@ decrementProductInCart(state, action) {
 
 			updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
 		},
+			setModalVisibility(state, action) {
+				state.isModalVisible = action.payload;
+		},
 	},
 });
 
@@ -93,6 +97,8 @@ export const {
 	decrementProductInCart,
 	removeProductFromCartById,
 	removeAllProductsFromCart,
+	setModalVisibility,
 } = BasketSlice.actions;
+export const selectIsModalVisible = (state) => state.basket.isModalVisible;
 export default BasketSlice.reducer;
  

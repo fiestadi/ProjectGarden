@@ -8,14 +8,14 @@
  }
  
  .label {
-  width: 140%;
+  width: 100%;
    display: block;
  
    
  }
  
  .input {
-   width: 100%;
+   width: 140%;
    padding: 10px;
    
 }

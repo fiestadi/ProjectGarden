@@ -8,11 +8,15 @@ const Modal = ({ isVisible, onClose }) => {
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
-       
-<h4 className={styles.title_modal}>Congratulations!</h4>
-<p className={styles.text_modal}>Your order has been successfully placed on the website. A manager will contact you shortly to confirm your order.</p>
-        <button onClick={onClose}>Close</button>
+      <div className={styles.modalContent}> 
+      <div className={styles.modalHeader}>
+          <p className={styles.title_modal}>Congratulations!</p>
+          <button className={styles.closeButton} onClick={onClose}>X</button>
+        </div>
+
+<p className={styles.text_modal}>Your order has been successfully placed on the website. </p>   
+<p className={styles.text_modal}>
+A manager will contact you shortly to confirm your order.</p>   
       </div>
     </div>
   );

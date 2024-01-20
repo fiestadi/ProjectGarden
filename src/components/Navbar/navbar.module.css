@@ -83,16 +83,7 @@ height:26px ;
       top: -24px;
     }
  }
- .no-quantity::after {
-  content: ' ';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  background-color: red; 
-  border-radius: 50%;
- }
+
 
 .busket img {
   margin-top: 1em;

@@ -38,7 +38,7 @@ text-decoration: none;
  .order_block {
    width: 100%;
    display: flex;
-   gap: 32px;
+   gap: 12px;
 }
 
 

@@ -1,27 +1,25 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './orderForm.module.css'
-import { Modal } from 'bootstrap';
-
-const OrderForm = () => {
+import { useDispatch } from 'react-redux';
+import { setModalVisibility } from '../../store/slices/basketSlice';
+const OrderForm = ({ onModalClose }) => {
   const [buttonText, setButtonText] = useState('Order');
   const [buttonStyle, setButtonStyle] = useState(styles.button);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const dispatch = useDispatch();
+ 
+
    const { register, handleSubmit, formState: { errors } } = useForm();
    
-   const handleButtonClick = () => {
-    setButtonText('The Order is Placed ');
-    setButtonStyle(`${styles.button} ${styles.orderPlaced}`); 
-  };
-  const handleModalClose = () => {
-    setIsModalVisible(false);
-    
-  };
-
+  //  const handleButtonClick = () => {
+  //   setButtonText('The Order is Placed ');
+  //   setButtonStyle(`${styles.button} ${styles.orderPlaced}`); 
+  // };
   
   const onSubmit = async (data) => {
       try {
-        setButtonText('Processing...');
+        setButtonText('The Order is Placed');
+        setButtonStyle(`${styles.button} ${styles.orderPlaced}`); 
         const response = await fetch('http://localhost:3333/order/send', {
           method: 'POST',
           headers: {
@@ -35,16 +33,17 @@ const OrderForm = () => {
   
        
         console.log('Form submitted successfully', responseData);
-      } catch (error) {
-       
-        console.error('Error submitting form', error);
-      }
-      handleButtonClick();
-    
-    };
- 
-
-  return (
+        dispatch(setModalVisibility(true));
+        onModalClose(); 
+      // handleButtonClick();
+    } catch (error) {
+      console.error('Error submitting form', error);
+    }
+  };
+  useEffect(() => {
+    // console.log('OrderForm rendered');
+  }, []);
+return (
     <>
     <form className={styles.formContainer}  onSubmit={handleSubmit(onSubmit)}>
       <label className={styles.label}>
@@ -57,7 +56,7 @@ const OrderForm = () => {
       <br />
       <label className={styles.label}>
       Phone number
-        <input    className={styles.input}
+        <input  className={styles.input}
           {...register('phoneNumber', { required: 'Phone number is required' })}
         />
       </label>
@@ -70,7 +69,6 @@ const OrderForm = () => {
       </label>
       <br />
       <button type="submit" className={buttonStyle}
-       onClick={handleButtonClick}
        >{buttonText}
 </button>
       {errors && (
@@ -81,8 +79,6 @@ const OrderForm = () => {
         </ul>
       )}
     </form>
-  {/* <Modal /> */}
-    
       </>
   );
 };

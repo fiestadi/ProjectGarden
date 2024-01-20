@@ -16,6 +16,8 @@ const BasketItem =({ id, image, title, price, discont_price, amount})  => {
             <img className={styles.product_img} src={URL + image} alt={title} />
             <div className={styles.grid_item}>
                 <p className={styles.product_name}>{title}</p>
+                <div className={styles.controls_container}>
+
                 <div className={styles.btns_blok}>
                     <button  className={styles.btn} onClick={() => dispatch(decrementProductInCart(id))}> - </button>
                     <span className={styles.count}>{amount}</span>
@@ -26,8 +28,7 @@ const BasketItem =({ id, image, title, price, discont_price, amount})  => {
             +
           </button>
                 </div>
-            </div>
-            <div className={styles.prices}>
+         <div className={styles.prices}>
                 {discont_price ? (
                         <>
                             <p className={styles.final_price}>
@@ -42,6 +43,8 @@ const BasketItem =({ id, image, title, price, discont_price, amount})  => {
                             <span className={styles.small_text}>$</span>
                         </p>
                 )}
+                  </div>
+            </div>
             </div>
             <button className={styles.del_btn} onClick={() => dispatch(removeProductFromCartById(id))}>
 
