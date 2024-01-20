@@ -1,12 +1,27 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './orderForm.module.css'
+import { Modal } from 'bootstrap';
 
 const OrderForm = () => {
+  const [buttonText, setButtonText] = useState('Order');
+  const [buttonStyle, setButtonStyle] = useState(styles.button);
+  const [isModalVisible, setIsModalVisible] = useState(false);
    const { register, handleSubmit, formState: { errors } } = useForm();
-   const onSubmit = async (data) => {
+   
+   const handleButtonClick = () => {
+    setButtonText('The Order is Placed ');
+    setButtonStyle(`${styles.button} ${styles.orderPlaced}`); 
+  };
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+    
+  };
+
+  
+  const onSubmit = async (data) => {
       try {
-        
+        setButtonText('Processing...');
         const response = await fetch('http://localhost:3333/order/send', {
           method: 'POST',
           headers: {
@@ -24,11 +39,14 @@ const OrderForm = () => {
        
         console.error('Error submitting form', error);
       }
+      handleButtonClick();
+    
     };
  
 
   return (
-    <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+    <>
+    <form className={styles.formContainer}  onSubmit={handleSubmit(onSubmit)}>
       <label className={styles.label}>
        Name
         <input    className={styles.input}
@@ -51,7 +69,9 @@ const OrderForm = () => {
         />
       </label>
       <br />
-      <button type="submit" className={styles.button}>Order
+      <button type="submit" className={buttonStyle}
+       onClick={handleButtonClick}
+       >{buttonText}
 </button>
       {errors && (
         <ul className={styles.errorList}>
@@ -61,6 +81,9 @@ const OrderForm = () => {
         </ul>
       )}
     </form>
+  {/* <Modal /> */}
+    
+      </>
   );
 };
 

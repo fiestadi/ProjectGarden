@@ -26,10 +26,6 @@ const calculateTotalSumm = (list) => {
 		BasketList: localStorageData.BasketList || [],
   totalAmount: +localStorageData.totalAmount || 0,
   totalSumm: +localStorageData.totalSumm || 0,
-
-	//   BasketList: localStorageData?.BasketList || [],
-	//   totalAmount: localStorageData?.totalAmount >= 0 ? +localStorageData.totalAmount : 0,
-	//   totalSumm: localStorageData?.totalSumm >= 0 ? +localStorageData.totalSumm : 0,
 	},
  
 	reducers: {

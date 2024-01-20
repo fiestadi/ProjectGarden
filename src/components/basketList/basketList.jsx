@@ -7,8 +7,8 @@ import styles from './basketList.module.css';
 
 	return (
 		<div className={styles.cart_list}>
-			{BasketList.map((item, index) => (
-				<BasketItem key={index} {...item} />
+			{BasketList.map((item, id) => (
+				<BasketItem  key={id} {...item} />
 			))}
 		</div>
 	);

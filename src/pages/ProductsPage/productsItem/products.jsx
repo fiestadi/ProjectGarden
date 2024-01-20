@@ -1,6 +1,6 @@
 import React,{ useState} from 'react';
 import { Link } from 'react-router-dom';
-import { URL } from '../../../components/URL/url';
+import { URL } from '../../../../src/components/URL/url';
 import styles from './productItem.module.css';
 import ButtonCard from '../../../components/buttonCard/buttonCard';
 

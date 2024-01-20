@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProductsWithDiscount, } from '../../store/slices/singleProductSlice';
-import { addProductsList, addProductsListWhithSale} from '../../store/slices/productSlice';
 import ProductItem from '../ProductsPage/productsItem/products';
 import styles from './allsels.module.css';
 import Filter from '../../components/filter/filter';
@@ -22,7 +21,7 @@ const DiscountedProductsPage = () => {
     <div className={styles.discont_container}>
       <p className={styles.title}>Discounted items</p>
       <Filter />
-      <div className={styles.productContainer}>
+      <div className={styles.container}>
       <div className={styles.productContainer}>
       <div className={styles.productList}>
       {productsWithDiscount
