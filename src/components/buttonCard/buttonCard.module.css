@@ -1,6 +1,13 @@
 .buttonContainer{
   width: 100%;
+  position: relative;
 
+}
+.buttonContainer:hover .button {
+  /* Стили для кнопки при наведении на контейнер */
+  /* Например, изменение цвета фона или добавление тени */
+  background-color: #45a049;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .button {
  margin-top: -51px;
@@ -23,6 +30,8 @@ border-radius:  6px;
 background: #393;
 z-index: 2;
 overflow: hidden;
+cursor: pointer;
+display: inline-block;
 }
 .active{
   padding: 16px 32px;
@@ -47,7 +56,7 @@ max-height: 50px;
    cursor: pointer;
  }
  
- .productItem {
+ /* .productItem {
    width: 100%;
    border: 1px solid #ddd;
    border-radius: 5px;
@@ -55,6 +64,8 @@ max-height: 50px;
    position: relative;
    box-sizing: border-box;
    overflow: hidden;
- } 
+ }  */
  
+  
+  
  

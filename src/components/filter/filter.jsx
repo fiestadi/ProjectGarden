@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useMemo } from 'react';
 import styles from './filter.module.css';
 import { useDispatch } from 'react-redux';
 import {  useLocation, useParams } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { searchByPrice, sort, filterDiscount, resetFilter } from '../../store/sl
 import CheckboxComponent from '../Checkbox/checkbox';
 
 const Filter = () => {
-    const initialFilters = {from: 0, to: Infinity}
+    const initialFilters = useMemo(() =>  ({from: 0, to: Infinity}),[])
     const [price, setPrice] = useState(initialFilters)
     const [discount, setDiscount] = useState(false)
     const {allsales} = useParams()
@@ -23,24 +23,28 @@ const Filter = () => {
 
     useEffect(() => {
         dispatch(resetFilter())
-        dispatch(filterDiscount(false))
         setDiscount(false)
         setPrice(initialFilters)
-    },[location, dispatch])
+    },[location, dispatch,initialFilters])
 
     const onChangeFilter = (by, data) => {
         setPrice({
             ...price,
             [by]:data
-        })
+        });
+    
     }
   
     const onChangeSort = (e) => {
-        console.log("Selected sort value:", e.target.value);
-        dispatch(sort(+e.target.value))
-    }
+      const selectedValue = e.target.value;
+        if (selectedValue !== 'default') {
+          console.log("Selected sort value:", selectedValue);
+          dispatch(sort(+selectedValue))
+        }
+      }
     const handleCheckboxChange = (isChecked) => {
         setShowDiscountedProducts(isChecked);
+        
       };
     
       useEffect(() => {
@@ -69,10 +73,10 @@ const Filter = () => {
                     value={price.to === Infinity ? '' : price.to}
                     />
             </div>
-            {allsales !== true && (
+            {(
                     <div className={styles.checkbox}>
                         <span className={styles.label}>Discounted items</span>
-                        <CheckboxComponent onCheckboxChange={handleCheckboxChange}/>
+                        <CheckboxComponent onCheckboxChange={handleCheckboxChange} isChecked={showDiscountedProducts}/>
                     </div> 
                 )
             }
@@ -80,10 +84,10 @@ const Filter = () => {
                 <span className={styles.label}>Sorted</span>
                 <select onChange={ onChangeSort } defaultValue='0'>
                     <option value="0" disabled hidden>by default</option>
-                    <option value="#">by default</option>
-                    <option value="#">newest</option>
-                    <option value="1">Price: high-low</option>
-                    <option value="-1">Price: low-high</option>
+                    <option value="default">by default</option>
+                    <option value="newest">newest</option>
+                    <option value="-1">Price: high-low</option>
+                    <option value="1">Price: low-high</option>
                 </select>
             </div>  
         </form>

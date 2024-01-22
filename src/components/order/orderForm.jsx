@@ -37,7 +37,7 @@ const OrderForm = ({ onModalClose }) => {
         onModalClose(); 
       // handleButtonClick();
     } catch (error) {
-      console.error('Error submitting form', error);
+  
     }
   };
   useEffect(() => {

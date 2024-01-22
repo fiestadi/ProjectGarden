@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterDiscount } from '../../store/slices/productSlice';
 
 const CheckboxComponent = ({ onCheckboxChange }) => {
+  const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
 
+
   useEffect(() => {
-    onCheckboxChange(isChecked);
-  }, [isChecked, onCheckboxChange]);
+    dispatch(filterDiscount(isChecked));
+  }, [isChecked, dispatch]);
 
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+    onCheckboxChange(!isChecked);
+
   };
 
   return (

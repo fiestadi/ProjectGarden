@@ -1,35 +1,36 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import {  useSelector, useDispatch } from 'react-redux';
 import styles from './main.module.css';
 import headerImg from '../../components/assets/img.jpg';
 import DiscountForm from './discountForm/discountForm';
 import GalleryItem from '../CategoriesPage/Gallery/galery';
-import ProductItem from '../ProductsPage/productsItem/products';
-
-import { fetchCategories } from '../../store/slices/categoriesSlice';
-
-
-
+import { fetchSingleProduct } from '../../store/slices/singleProductSlice';
+import RandomDiscountedProducts from '../../components/randomDiscountProduct/random';
 
 
 
 const MainPage = () => {
   const dispatch = useDispatch();
+  const { id } = useParams();
   const { list } = useSelector(state => state.categories);
   const categoriesRef = useRef(null);
-  const { product } = useSelector(state => state.products); 
+  const { data: products } = useSelector(state => state.products);
+ 
+ 
   useEffect(() => {
     document.title = "Main Page"
   }, []);
   useEffect(() => {
-    dispatch(fetchCategories());
+    dispatch(fetchSingleProduct(id));
+  }, [id, dispatch]);
 
-  }, [dispatch]);
+
   const handleButtonClick = () => {
     // Scroll 
     categoriesRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+  
   return (
     <main>
       <div className={styles['home-container']}>
@@ -80,13 +81,8 @@ const MainPage = () => {
             All sales
           </Link>
         </div>
-        {/* <div className={styles.products_on_sale}>
-        {product && (
-    <Link to={`/products/${product.id}`}>
-      <ProductItem item={product} />
-    </Link>
-  )}
-        </div> */}
+        <RandomDiscountedProducts products={products} />
+  
         </div>
     </main>
     );

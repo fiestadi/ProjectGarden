@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React,{useEffect}  from 'react'
 import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import MainPage from './pages/MainPage/main';
 import AllProducts from './pages/ProductsPage/allproducts';
@@ -13,6 +13,7 @@ import SinglePage from './pages/SingleProductPage/singlePage';
 import NotFoundPage from './pages/NotFoundPage/404';
 import CategoryList from './components/categoryList/categoryList';
 import BasketPage from './pages/BacketPage/basket';
+
 
 function App() {
   const dispatch = useDispatch()

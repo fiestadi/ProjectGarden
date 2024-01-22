@@ -23,9 +23,9 @@ const calculateTotalSumm = (list) => {
 	name: 'basket',
  
 	initialState: {
-		BasketList: localStorageData.BasketList || [],
-  totalAmount: +localStorageData.totalAmount || 0,
-  totalSumm: +localStorageData.totalSumm || 0,
+BasketList: localStorageData?.BasketList || [],
+  totalAmount: +localStorageData?.totalAmount || 0,
+  totalSumm: +localStorageData?.totalSumm || 0,
   isModalVisible: false,
 	},
  

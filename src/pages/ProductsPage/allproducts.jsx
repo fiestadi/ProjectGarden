@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-// import styles from './product.module.css';
 import ProductItem from './productsItem/products';
 import { useDispatch,useSelector} from 'react-redux';
 import styles from './product.module.css';
@@ -17,6 +16,7 @@ const ProductsPage = () => {
     useEffect(() => {
         dispatch(fetchProducts());
       }, [dispatch]);
+    
   
      
       const products = useSelector(state => state.products.data)

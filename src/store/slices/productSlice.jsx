@@ -22,23 +22,26 @@ export const fetchProducts = createAsyncThunk(
 
     }
 )
-export const fetchAllProductsList = (type) => {
-	return function (dispatch) {
-		fetch(`${URL}/products/all`)
-			.then((res) => res.json())
-			.then((data) => {
-				dispatch(addProductsList({ data, category: {} }));
-				if (type === 'sale') {
-					dispatch(addProductsListWhithSale());
-				}
-			});
-            
-	};
-};
+export const fetchAllProductsList = createAsyncThunk(
+    'products/fetchAllProductsList',
+    async (type, { dispatch }) => {
+      const response = await fetch(`${URL}/products/all`);
+      const data = await response.json();
+  
+      dispatch(addProductsList({ data, category: {} }));
+  
+      if (type === 'sale') {
+        dispatch(addProductsListWhithSale());
+      }
+    }
+  );
 export const productsSlice = createSlice({
     name: 'products',
     initialState: {
         data: [],
+        productslist: [],
+        status: 'idle',
+        error: null,
     },
     
     reducers: {
@@ -49,9 +52,9 @@ export const productsSlice = createSlice({
             })
         },
         addProductsListWhithSale(state) {
+			state.data = state.data.filter(
+                (product) => product.discont_price !== null
 			
-			state.productslist = state.productslist.filter(
-				(product) => product.discont_price
 			);
 		},
         addProductsList(state, action) {
@@ -74,19 +77,18 @@ export const productsSlice = createSlice({
         searchByPrice: (state, { payload }) => {
             const { from, to } = payload
             state.data = state.data.map(el =>
-                ({ ...el, show: el.finalPrice <= to && el.finalPrice >= from })
-            );
+                ({ ...el, show: el.finalPrice <= to && el.finalPrice >= from }));
         },
         filterDiscount: (state, { payload }) => {
             if (payload) {
-                state.data = state.data.map(elem => {
+                state.data = state.data.map((elem) => {
                     if (elem.discont_price == null) {
-                        elem.discount = false
+                        elem.discount = false;
                     }
-                    return elem
-                })
+                    return elem;
+                });
             } else {
-                state.data = state.data.map(elem => ({ ...elem, discont: true }))
+                state.data = state.data.map((elem) => ({ ...elem, discount: true }));
             }
         },
         resetFilter: (state) => {
@@ -97,18 +99,18 @@ export const productsSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProducts.pending, (state) => {
-                state.status = 'loading'
+            .addCase(fetchProducts.pending, state => {
+                state.status = 'loading';
             })
             .addCase(fetchProducts.fulfilled, (state, { payload }) => {
                 state.data = payload
                 state.status = 'resolve'
             })
             .addCase(fetchProducts.rejected, (state, { payload }) => {
-                state.status = 'rejected'
-                state.error = payload
-            })
-    }
-})
+                state.status = 'rejected';
+                state.error = payload;
+            });
+    },
+});
 export const { sort, searchByPrice, filterDiscount, resetFilter,addProductsListWhithSale,addProductsList } = productsSlice.actions
 export default productsSlice.reducer

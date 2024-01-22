@@ -1,0 +1,8 @@
+.conteinerProducts {
+   display: flex;
+   flex-wrap: nowrap; 
+   overflow-x: auto; 
+   gap: 45px;
+   padding: 0 40px;
+ }
+
