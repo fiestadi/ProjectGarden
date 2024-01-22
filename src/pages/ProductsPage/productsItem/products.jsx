@@ -1,11 +1,12 @@
 import React,{ useState} from 'react';
 import { Link } from 'react-router-dom';
 import { URL } from '../../../../src/components/URL/url';
+import { useDispatch } from 'react-redux'; 
 import styles from './productItem.module.css';
 import ButtonCard from '../../../components/buttonCard/buttonCard';
-
+import { addProductToCart } from '../../../store/slices/basketSlice';
 const ProductItem = ({ item, showDiscount }) => {
-
+  const dispatch = useDispatch();
     const link = `/product/${item.id}`;
     const discountedPrice = item.discont_price
     ? item.price - (item.price * item.discont_price) / 100
@@ -16,7 +17,9 @@ const ProductItem = ({ item, showDiscount }) => {
       return <div>No item data available</div>;
     }
     const addToCartHandler = () => {
-      setIsAddedToCart(!isAddedToCart);
+      dispatch(addProductToCart(item));
+      setIsAddedToCart(true);
+      // setIsAddedToCart(!isAddedToCart);
     };
     return (
 

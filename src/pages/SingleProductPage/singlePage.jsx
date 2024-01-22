@@ -19,11 +19,15 @@ const SingleProductPage = () => {
   }, [id, dispatch]);
 
   const handleAddToCart = () => {
-    const { title, image, price, discont_price} = product.item && product.item.length > 0 ? product.item[0] : {};
+    const { title, image, price, discont_price } = product.item && product.item.length > 0 ? product.item[0] : {}
 
-    dispatch(addProductToCart({ id, image, title, price, discont_price }));
-    setAddedToCart(true); 
+    for (let i = 0; i < quantity; i++) {
+      dispatch(addProductToCart({ id, image, title, price, discont_price,amount: quantity, }));
+    }
+  
+    setAddedToCart(true);
   };
+
 
   const product = useSelector((state) => state.product);
   const { title, description, discont_price, price, image } = product.item && product.item.length > 0 ? product.item[0] : {};
@@ -50,6 +54,10 @@ const SingleProductPage = () => {
       setQuantity(0); 
     }
   }, [addedToCart]);
+  const calculateTotalPrice = () => {
+    const basePrice = discountedPrice !== null ? discountedPrice : price;
+    return (basePrice * quantity).toFixed(2);
+  };
 
 // dostup k zagolovku 
 
@@ -76,16 +84,17 @@ const SingleProductPage = () => {
             {discountedPrice !== null && (
               <>
                 <p className={styles.productInfo_price_discounted}>
+              
                   ${discountedPrice}
                 </p>
                 {price !== null && (
-                  <p className={styles.productInfo_price}> ${price}</p>
+                  <p className={styles.productInfo_price}> ${calculateTotalPrice()}</p>
                 )}
               </>
             )}
-            {discountedPrice === null && price !== null && (
+            {discountedPrice === null &&  (
               <p className={styles.productInfo_price_no_discount}>
-                ${price}
+               ${calculateTotalPrice()}
               </p>
             )}
           </div>

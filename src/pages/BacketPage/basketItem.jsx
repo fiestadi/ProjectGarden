@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { URL } from '../../components/URL/url';
 import {decrementProductInCart,
 	removeProductFromCartById,
-    addProductToCart,
+    addProductToCart
 } from '../../store/slices/basketSlice';
 import delte from '../../components/assets/delteIcon.png'
 const BasketItem =({ id, image, title, price, discont_price, amount})  => { 

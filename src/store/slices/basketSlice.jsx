@@ -46,6 +46,20 @@ BasketList: localStorageData?.BasketList || [],
   }
   updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
 },
+incrementProductInCart(state, action) {
+	const targetProduct = state.BasketList.find(
+	  (item) => action.payload === item.id
+	);
+
+	if (targetProduct) {
+	  targetProduct.amount += 1;
+	  state.totalAmount += 1;
+	  const incrTotalSumm =
+		 state.totalSumm + (targetProduct.discont_price || targetProduct.price);
+	  state.totalSumm = +incrTotalSumm.toFixed(2);
+	  updateLocalStorage(state.BasketList, state.totalAmount, state.totalSumm);
+	}
+ },
 	
 decrementProductInCart(state, action) {
 			const tempProduct = state.BasketList.find(
@@ -105,6 +119,7 @@ export const {
 	removeAllProductsFromCart,
 	setModalVisibility,
 	clearBasket,
+	incrementProductInCart
 } = BasketSlice.actions;
 export const selectIsModalVisible = (state) => state.basket.isModalVisible;
 export default BasketSlice.reducer;
