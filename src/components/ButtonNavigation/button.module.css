@@ -24,3 +24,10 @@ align-items: center;
 border-radius:  6px;
 border: 1px solid  #DDD;
 }
+
+  .line {
+    border-bottom: 1px solid #DDD;
+    flex-grow: 1;
+    height: 2px; 
+  margin-top: 24px; ; 
+  } 

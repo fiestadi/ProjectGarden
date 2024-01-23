@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import {addProductToCart} from '../../store/slices/basketSlice';
 import { fetchSingleProduct } from '../../store/slices/singleProductSlice';
 import { URL } from '../../components/URL/url';
+import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
+
 
 
 
@@ -58,11 +60,17 @@ const SingleProductPage = () => {
     const basePrice = discountedPrice !== null ? discountedPrice : price;
     return (basePrice * quantity).toFixed(2);
   };
-
-// dostup k zagolovku 
-
+  const breadcrumbsData = [
+    { path: '/', label: 'Main Page' },
+    { path: '/categories', label: 'Categories' },
+    { path: '/product:id', label: title },
+  ];
    return (
           <>
+      <Breadcrumbs breadcrumbs={breadcrumbsData}/>
+      <div className={styles.productContainer}>
+      </div>
+       
               <div className={styles.productContainer}>
                 <div className={styles.productInfo}>
                   <div className={styles.photoContainer}>

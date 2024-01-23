@@ -1,0 +1,35 @@
+.breadcrumbs {
+   display: flex;
+   align-items: center;
+   padding: 40px;
+ }
+ 
+ .breadcrumbLink {
+   text-decoration: none;
+   color: #8B8B8B;
+ }
+ 
+ .breadcrumbItem {
+   margin-right: 16px;
+   max-width: 120px;
+   max-height: 36px;
+   background:#FFFFFF ;
+   color: #8B8B8B;
+   font-size: 16px;
+   background: #f6f3f3;
+   font-family: Montserrat;
+   padding: 8px 16px;
+   justify-content: center;
+   align-items: center;
+   border-radius: 6px;
+   border: 1px solid #DDD;
+   margin-right: 26px;
+ }
+ .breadcrumbsSeparator {
+   border-bottom: 1px solid #DDD;
+   flex-grow: 1;
+   height: 2px;
+   margin-top: 24px;
+  background: #DDD;
+ 
+ }

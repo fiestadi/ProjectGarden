@@ -1,15 +1,14 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ProductItem from '../../pages/ProductsPage/productsItem/products';
 import styles from './categoryList.module.css'
 import Filter from '../filter/filter';
+import Breadcrumbs from '../breadcrumbs/breadcrumbs';
+
 const CategoryList = () => {
-  const { id } = useParams();
+  const { id, categoryTitle } = useParams();
   const [categoryData, setCategoryData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  
-  
-  useEffect(() => {
+ useEffect(() => {
    const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3333/categories/${id}`,{
@@ -27,15 +26,14 @@ const CategoryList = () => {
         if (contentType && contentType.includes('application/json')) {
           const data = await response.json()
           setCategoryData(data);
-          console.log(data)
+  
         } else {
           throw new Error('Response is not in JSON format');
         }
-
-        setLoading(false);
-    
+       
       } catch (error) {
         console.error('Error fetching category:', error);
+      
       }
     };
 
@@ -45,9 +43,17 @@ const CategoryList = () => {
   if (!categoryData) {
    return <p>Categoru is not found</p>;
  }
+ const breadcrumbsData = [
+  { path: '/', label: 'Main Page' },
+  { path: '/categories', label: 'Categories' },
+  { path: 'products/fetchAllProductsList', label: categoryTitle },
+ 
+];
 
   return (
     <div>
+    <Breadcrumbs breadcrumbs={breadcrumbsData} />
+   
        <p className={styles.title}>{categoryData.category.title}</p>
 
 

@@ -6,6 +6,7 @@ import { URL } from '../../../components/URL/url';
 const GalleryItem = ({ id, title, image }) => {
 
     return (
+       
         <Link className={styles.item} to={`/categories/${title}/${id}`} >
         <img src={`${URL}${image}`} alt={title} />
         <p>{title}</p>

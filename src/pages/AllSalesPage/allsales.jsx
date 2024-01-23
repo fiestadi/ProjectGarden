@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import { fetchProductsWithDiscount} from '../../store/slices/singleProductSlice';
 import ProductItem from '../ProductsPage/productsItem/products';
 import styles from './allsels.module.css';
-// import Filter from '../../components/filter/filter';
+import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
+
 
 const DiscountedProductsPage = () => {
   const dispatch = useDispatch();
@@ -15,12 +15,17 @@ const DiscountedProductsPage = () => {
   useEffect(() => {
     dispatch(fetchProductsWithDiscount());
   }, [dispatch]);
-
+  const breadcrumbsData = [
+    { path: '/', label: 'Main Page' },
+    { path: '/allsales', label: 'All Salles'},
+   
+  ];
 
   return (
+    <>
+    <Breadcrumbs breadcrumbs={breadcrumbsData}/>
     <div className={styles.discont_container}>
       <p className={styles.title}>Discounted items</p>
-      {/* <Filter /> */}
       <div className={styles.container}>
       <div className={styles.productContainer}>
       <div className={styles.productList}>
@@ -29,7 +34,6 @@ const DiscountedProductsPage = () => {
           .map((product) => (
             <div key={product.id} className={styles.productItem}>
               <div>
-              {/* <Link to={`/product/${product.id}`}> */}
         <ProductItem item={product} />
         </div>
       {/* </Link> */}
@@ -39,6 +43,7 @@ const DiscountedProductsPage = () => {
       </div>
     </div>
      </div>
+     </>
   );
 };
 

@@ -22,7 +22,12 @@ margin-left: 0.6em;
    position: relative;
    box-sizing: border-box; 
  }
- 
+ .breadcrumbs{
+  padding:  40px;
+ display: flex;
+align-items: center;
+
+ }
  
  
       

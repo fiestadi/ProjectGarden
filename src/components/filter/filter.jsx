@@ -1,7 +1,7 @@
 import React, { useState, useEffect,useMemo } from 'react';
 import styles from './filter.module.css';
 import { useDispatch } from 'react-redux';
-import {  useLocation, useParams } from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 
 import { searchByPrice, sort, filterDiscount, resetFilter } from '../../store/slices/productSlice';
 import CheckboxComponent from '../Checkbox/checkbox';
@@ -9,8 +9,7 @@ import CheckboxComponent from '../Checkbox/checkbox';
 const Filter = () => {
     const initialFilters = useMemo(() =>  ({from: 0, to: Infinity}),[])
     const [price, setPrice] = useState(initialFilters)
-    const [discount, setDiscount] = useState(false)
-    const {allsales} = useParams()
+    const [discount, setDiscount] = useState(false);
     const dispatch = useDispatch()
     const location = useLocation()
     const [showDiscountedProducts, setShowDiscountedProducts] = useState(false);
