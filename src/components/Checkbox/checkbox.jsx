@@ -41,7 +41,7 @@ const CheckboxComponent = ({ onCheckboxChange }) => {
             display: 'none',
           }}
         />
-         {/* galochka */}
+        {/* galochka */}
         {isChecked ? (
           <span
             style={{

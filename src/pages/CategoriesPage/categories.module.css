@@ -30,3 +30,54 @@ font-weight: 700;
   justify-content:centr;
   gap: 22px; 
 }
+@media only screen and (max-width: 1024px) {
+  .categoriesPage {
+    margin-left: 20px;
+  }
+
+  .categoriesItem {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 48px; 
+    margin: 40px 0;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .categoriesPage {
+    margin-left: 10px;
+  }
+
+  .categoriesItem {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 36px;
+    margin: 30px 0;
+  }
+
+  .categories {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+  .categoriesPage {
+    margin-left: 5px;
+  }
+
+  .categoriesItem {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 24px; 
+    margin: 20px 0;
+  }
+}

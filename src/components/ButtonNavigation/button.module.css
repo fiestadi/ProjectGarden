@@ -1,33 +1,72 @@
 .navButton {
   max-width: 120px;
   max-height: 36px;
-margin-top: 30px;
-  color:#8B8B8B;
+  margin-top: 30px;
+  color: #8B8B8B;
   font-size: 16px;
   font-family: Montserrat;
   padding: 8px 16px;
   justify-content: center;
   align-items: center;
-  border-radius:  6px;
-  border: 1px solid  #DDD;
+  border-radius: 6px;
+  border: 1px solid #DDD;
   margin-right: 16px;
 }
 
 .mainButton {
-  color:  #282828;
+  color: #282828;
   text-align: center;
   font-family: Montserrat;
   font-size: 16px;
-padding: 8px 16px;
-justify-content: center;
-align-items: center;
-border-radius:  6px;
-border: 1px solid  #DDD;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #DDD;
 }
 
-  .line {
-    border-bottom: 1px solid #DDD;
-    flex-grow: 1;
-    height: 2px; 
-  margin-top: 24px; ; 
-  } 
+.line {
+  border-bottom: 1px solid #DDD;
+  flex-grow: 1;
+  height: 2px;
+  margin-top: 24px;
+  ;
+}
+
+@media only screen and (max-width: 1024px) {
+  .navButton {
+    font-size: 14px;
+    max-width: 100%;
+    margin-right: 10px;
+  }
+
+  .mainButton {
+    font-size: 14px;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .navButton {
+    font-size: 12px;
+    max-width: 100%;
+    margin-right: 10px;
+  }
+
+  .mainButton {
+    font-size: 12px;
+  }
+}
+
+
+@media only screen and (max-width: 400px) {
+  .navButton {
+    font-size: 10px;
+    max-width: 100%;
+    margin-right: 5px;
+  }
+
+  .mainButton {
+    font-size: 10px;
+  }
+}

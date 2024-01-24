@@ -28,10 +28,28 @@ height: 300px;
   text-decoration: none;
   transition: transform 0.3s ease-in-out; 
   overflow: hidden;
-   /* chtobi ne vichodili za predeli cartochek */
+}
+@media (max-width: 1024px) {
+  .item img {
+    height: 250px; 
+  }
+  .item{
+    font-size: 15px; 
+  }
 }
 @media (max-width: 768px) {
   .item img {
-    height: 150px;
+    height: 100px;
+  }
+  .item{
+    font-size: 10px; 
+  }
+}
+@media (max-width: 400px) {
+  .item img {
+    height: 50px;
+  }
+  .item{
+    font-size: 10px; 
   }
 }

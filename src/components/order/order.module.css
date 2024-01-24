@@ -1,8 +1,11 @@
+.orderForm{
+  width: 100%;
+}
 .order {
 width: 100%;
   height: auto;
    display: flex;
-   padding: 59px;
+   padding: 29px;
    border-radius: 12px;
 background: #F1F3F4;
 flex-direction: column;
@@ -81,3 +84,41 @@ margin-top: -10px;
    padding: 8px;
    margin-bottom: 1px;
  }
+ @media (min-width: 1024px) {
+  .order {
+      padding: 30px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .order {
+      padding: 20px;
+  }
+  .order_title {
+      font-size: 32px;
+  }
+  .amount {
+      font-size: 32px;
+      max-width: 120px;
+  }
+  .totalSumm {
+      font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .order {
+      padding: 15px;
+  }
+  .order_title {
+      font-size: 24px;
+  }
+  .amount {
+      font-size: 24px;
+      max-width: 100px;
+  }
+  .totalSumm {
+      font-size: 36px;
+  }
+}
+

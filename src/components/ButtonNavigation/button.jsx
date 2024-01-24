@@ -4,20 +4,20 @@ import styles from './button.module.css';
 const ButtonLink = () => {
   return (
     <div className={styles.navigation}>
-       
-    <NavLink to="/" exact={true.toString()}><button className={styles.navButton}>
+
+      <NavLink to="/" exact={true.toString()}><button className={styles.navButton}>
         Main page
       </button>
       </NavLink>
-    <span className={styles.line}></span>
-    <NavLink to="/categories">
-      <button className={
-        `${styles.navButton} ${styles.mainButton}`}>
-        Categories
-      </button>
-    </NavLink>
-  </div>
-);
+      <span className={styles.line}></span>
+      <NavLink to="/categories">
+        <button className={
+          `${styles.navButton} ${styles.mainButton}`}>
+          Categories
+        </button>
+      </NavLink>
+    </div>
+  );
 };
 
 export default ButtonLink;

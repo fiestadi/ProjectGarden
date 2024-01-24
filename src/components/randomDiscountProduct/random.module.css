@@ -1,8 +1,32 @@
 .conteinerProducts {
-   display: flex;
-   flex-wrap: nowrap; 
-   overflow-x: auto; 
-   gap: 45px;
-   padding: 0 40px;
- }
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 45px;
+  padding: 0 40px;
+}
 
+@media (min-width: 1024px) {
+  .conteinerProducts {
+    padding: 0 60px;
+    gap: 30px;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 1023px) {
+  .conteinerProducts {
+    padding: 20px 30px;
+    gap: 20px;
+    overflow-x: auto;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .conteinerProducts {
+    padding: 100px 25px;
+    gap: 10px;
+    overflow-x: auto;
+  }
+}

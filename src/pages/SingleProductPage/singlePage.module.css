@@ -1,13 +1,15 @@
 .productContainer {
    width: 100%;
    margin-left: 2em;
-   margin-top: 5em;
+   margin-top: 2em;
    display: flex;
    align-items: center;
    gap: 4em;
 
  }
 .productTitle{
+  max-width: 400px;
+  max-height: 74px;
    color:#282828;
    font-family: Montserrat;
    font-size: 2em;

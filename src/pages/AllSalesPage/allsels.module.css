@@ -17,15 +17,23 @@ font-weight: 700;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px 30px;
+    padding: 20px 10px;
   }
   
   .productItem {
    
-    width: 24%; 
+    width: 60%;
+    height: 40%; 
     margin-bottom: 26px; 
   } 
- .container{
-  width: 100%;
+ @media only screen and (min-width: 768px) {
+  .productItem {
+    width: 32%;
+  }
+}
 
- }
+@media only screen and (min-width: 1024px) {
+  .productItem {
+    width: 24%;
+  }
+}

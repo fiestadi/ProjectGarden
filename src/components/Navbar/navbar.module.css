@@ -3,7 +3,7 @@
   max-height: 128px; 
    background-color:
    #FFFFFF; 
-   /* padding: 5px; */
+   padding: 5px;
    margin-top: 30px;
  font-family: 'Montserrat', sans-serif;
 font-size: 20px;
@@ -21,11 +21,11 @@ border-bottom: 1px solid var(--grey-divider, #DDD);
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  padding: 0 10px; 
 }
  
  .nav_list { 
-  top: 54px;
+  top: auto;
    list-style: none; 
    padding: 0; 
    display: flex; 
@@ -34,6 +34,8 @@ border-bottom: 1px solid var(--grey-divider, #DDD);
  }
  
  .nav-link {
+    width: auto;
+    height: auto;
    text-decoration: none; 
    color: 
    #282828; 
@@ -64,7 +66,7 @@ height:26px ;
 
 .busket {
   top: 41px;
-  margin-right: 2.5em;
+  margin-right: 10px;
 }
 .basket_counter{
   position: relative;

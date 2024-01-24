@@ -1,36 +1,73 @@
 .formContainer {
-   max-width: 400px;
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-start;
+  max-width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
- }
- 
- .label {
-  width: 100%;
-   display: block;
- 
-   
- }
- 
- .input {
-   width: 140%;
-   padding: 10px;
-   
 }
 
- 
- .button {
- width: 150%;
-   background-color: #4caf50;
-   color: #fff;
-   padding: 14px 20px;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
- }
- .orderPlaced {
-background-color: #fff;
+.label {
+  width: 100%;
+  display: block;
+
+
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+
+}
+
+
+.button {
+width: 110%;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 14px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.orderPlaced {
+  background-color: #fff;
   color: #282828;
+}
+
+@media (min-width: 1024px) {
+  .formContainer {
+    max-width: 600px;
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .formContainer {
+    max-width: 500px;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .formContainer {
+    max-width: 300px;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
 }

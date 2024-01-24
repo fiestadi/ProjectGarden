@@ -28,6 +28,48 @@ margin-left: 0.6em;
 align-items: center;
 
  }
+ @media (max-width: 1024px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .productContainer {
+    margin-left: 1em; 
+  }
+
+  .breadcrumbs {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 36px; 
+  }
+
+  .productContainer {
+    margin-left: 0.5em;
+  }
+
+  .breadcrumbs {
+    padding: 5px;
+  }
+}
+
+
+@media (max-width: 400px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .productContainer {
+    margin-left: 0;
+  }
+
+  .breadcrumbs {
+    padding: 2px; 
+  }
+}
  
  
       
