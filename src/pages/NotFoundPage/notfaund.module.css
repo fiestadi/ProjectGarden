@@ -1,27 +1,31 @@
  .page{
-   max-width: 1440px;
+  width: 100%;
+   /* max-width: 1440px; */
    margin: 30px auto;
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
+   overflow-x: hidden; 
+
 
  }
  .imageRow {
-  margin-top: 40px;
-  max-width: 670px;
+  margin-top: 20px;
+  max-width: 400px;
   max-height:270px;
+  width: 100%; 
   display: flex;
   justify-content: center;
   gap: 16px;
 }
  .img {
-   width: 300px;
-   height: 50%;
+  width: 100%; 
+   height: auto;
    object-fit: cover;
  }
  .title_text{
-  margin-left: 20px;
+  margin: 20px 0px;
   color: #282828;
 text-align: center;
 font-family: Montserrat;
@@ -31,6 +35,7 @@ font-weight: 700;
 
  }
  .text {
+  width: 100%; 
   max-width: 564px;
   max-height: 62px;
   color: #8B8B8B;
@@ -65,4 +70,12 @@ background: #393;
    color: white;
    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px;
  }
- 
+ @media only screen and (max-width: 400px) {
+  .img {
+    width: 40%; 
+    height: auto;
+  }
+  .page{
+    padding: 30px 10px;
+  }
+}

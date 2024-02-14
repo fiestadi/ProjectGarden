@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { filterDiscount } from '../../store/slices/productSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleShowDiscountedProducts } from '../../store/slices/productSlice';
 
 const CheckboxComponent = ({ onCheckboxChange }) => {
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
-
-
+  const products = useSelector((state) => state.products.data);
   useEffect(() => {
-    dispatch(filterDiscount(isChecked));
-  }, [isChecked, dispatch]);
-
+    const hasDiscountedProducts = products.some(product => product.discount_price > 0);
+    setIsChecked(hasDiscountedProducts);
+  }, [products]);
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-    onCheckboxChange(!isChecked);
-
+    const updatedIsChecked = !isChecked;
+    setIsChecked(updatedIsChecked);
+    dispatch(toggleShowDiscountedProducts(updatedIsChecked));
+    onCheckboxChange(updatedIsChecked);
   };
+  
 
   return (
     <div>
@@ -35,8 +36,8 @@ const CheckboxComponent = ({ onCheckboxChange }) => {
       }}>
         <input
           type="checkbox"
-          checked={isChecked}
           onChange={handleCheckboxChange}
+          checked={isChecked}
           style={{
             display: 'none',
           }}

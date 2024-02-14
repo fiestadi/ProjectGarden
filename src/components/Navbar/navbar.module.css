@@ -8,7 +8,7 @@
  font-family: 'Montserrat', sans-serif;
 font-size: 20px;
 border-bottom: 1px solid var(--grey-divider, #DDD);
-
+box-sizing: border-box;
  }
  @media only screen and (max-width: 768px) {
   .navbar {
@@ -39,8 +39,8 @@ border-bottom: 1px solid var(--grey-divider, #DDD);
    text-decoration: none; 
    color: 
    #282828; 
-  width:108px;
-height:26px ;
+  /* width:108px;
+height:26px ; */
  }
  .active {
   color:

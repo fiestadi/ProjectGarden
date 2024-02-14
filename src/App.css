@@ -1,8 +1,9 @@
 *{
    margin: 0;
    padding: 0;
+  max-width: 1440px;
+  max-height: 3900px;
    box-sizing: border-box;
    font-family: 'Montserrat', sans-serif;
-   
 }
 

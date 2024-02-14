@@ -40,7 +40,9 @@ export const singleProductSlice = createSlice({
    
    name: 'item',
     initialState: {
-        item: {} 
+        item: {},
+        status: 'idle',
+        error: null,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -56,7 +58,19 @@ export const singleProductSlice = createSlice({
                 state.status = 'rejected'
                 state.error = payload
             })
+            .addCase(fetchProductsWithDiscount.pending, (state) => {
+              state.status = 'loading';
+          })
+          .addCase(fetchProductsWithDiscount.fulfilled, (state, { payload }) => {
+              state.item = payload;
+              state.status = 'resolved';
+          })
+          .addCase(fetchProductsWithDiscount.rejected, (state, { payload }) => {
+              state.status = 'rejected';
+              state.error = payload;
+    
+});
     }
-})
+  });
 
 export default singleProductSlice.reducer

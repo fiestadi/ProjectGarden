@@ -1,10 +1,12 @@
+
 .home-container {
   width: 100%;
+  /* height: auto; */
   max-height: 3900px;
 }
 
 .header-container {
-  max-height: 600px;
+  /* max-height: 600px; */
   position: relative;
   text-align: start;
 
@@ -95,7 +97,7 @@
 
 .content_sales {
   margin-top: 4em;
- width: 97%;
+ width: 98%;
   height: auto;
   display: flex;
   align-items: center;
@@ -166,7 +168,7 @@
 }
 
 .discountFor_discountImage {
-  max-width: 100%;
+  max-width: 98%;
   height: auto;
 }
 
@@ -180,8 +182,9 @@
 }
 
 .products_on_sale {
-  width: 100%;
-  max-height: 450px;
+  /* width: 70%; */
+  max-width: 1360px;
+  max-height: 100px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -210,12 +213,12 @@
     padding: 0 20px;
   }
   .saleTitle {
-    margin-top: 300px;
+    margin-top: 250px;
   }
   .all_sales_button{
-   margin-top: 250px; 
+   margin-top: 150px; 
   }
   .line_sale{
-    margin-top: 250px;
+    margin-top: 150px;
   }
 }

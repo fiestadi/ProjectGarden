@@ -1,12 +1,12 @@
 
 .conteinerProducts{
-  max-width:1440px ;
+  /* max-width:1440px ; */
 width: 100%;
-  display: flex; 
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   gap: 16px; 
 padding: 30px;
+overflow: hidden;
 }
 .allProduct_title{
   margin-top: 20px;
@@ -42,8 +42,8 @@ font-weight: 700;
 
 @media only screen and (max-width: 400px) {
   .conteinerProducts {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
   }
 
   .allProduct_title {

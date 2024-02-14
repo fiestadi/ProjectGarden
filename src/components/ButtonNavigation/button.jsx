@@ -4,7 +4,6 @@ import styles from './button.module.css';
 const ButtonLink = () => {
   return (
     <div className={styles.navigation}>
-
       <NavLink to="/" exact={true.toString()}><button className={styles.navButton}>
         Main page
       </button>

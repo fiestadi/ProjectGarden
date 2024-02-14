@@ -9,7 +9,7 @@ const Breadcrumbs = ({ breadcrumbs }) => {
           <Link to={crumb.path} className={styles.breadcrumbLink} >
             {crumb.label}
           </Link>
-          {id < breadcrumbs.length - 1 && <span className={styles.breadcrumbsSeparator}></span>}
+          <span className={styles.breadcrumbsSeparator}></span>
         </span>
       ))}
     </div>

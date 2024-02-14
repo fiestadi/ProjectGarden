@@ -1,8 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ProductItem from '../../pages/ProductsPage/productsItem/products';
-import styles from './categoryList.module.css'
-import Filter from '../filter/filter';
+import styles from './categoryList.module.css';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 
 const CategoryList = () => {
@@ -58,7 +57,6 @@ const CategoryList = () => {
 
 
        <div className={styles.productWrapper}>
-        <Filter />
        <div className={styles.productContainer}>
     {categoryData.data.map((product) => (
       <ProductItem key={product.id} item={product} />

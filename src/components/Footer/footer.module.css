@@ -93,3 +93,35 @@ footer {
     font-size: 14px;
   }
 }
+@media only screen and (max-width: 400px) {
+  .footer {
+    max-width: none;
+    margin-left: 0; 
+  }
+  
+  .footer_container {
+    grid-template-columns: auto;
+    grid-gap: 10px; 
+  }
+
+  .contact {
+    font-size: 2em;
+  }
+
+  .instagramButton {
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 3px;
+  }
+
+  .text,
+  .text_adress,
+  .content_adress {
+    font-size: 12px;
+  }
+
+  .vertical {
+    min-width: unset;
+    padding: 8px;
+  }
+}

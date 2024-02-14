@@ -1,5 +1,7 @@
 .filterForm {
   display: flex;
+  flex-direction:row;
+
   gap: 30px;
   margin-bottom: 35px;
   margin-left: 40px;
@@ -67,15 +69,17 @@
   }
 }
 
-@media (max-width: 700px) {
 
-  .inputs_price input,
-  .sort_options select {
-    width: 50%;
-  }
 
-  .filter_form {
-    flex-direction: column;
-    gap: 20px;
+  @media (max-width: 700px) {
+    .inputs_price input,
+    .sort_options select {
+      width: 50%;
+    }
+  
+    .filterForm {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
-}
+  

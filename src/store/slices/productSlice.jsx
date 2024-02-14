@@ -12,16 +12,16 @@ export const fetchProducts = createAsyncThunk(
             const products = await resp.json()
             return products.map(item => ({
                 ...item,
-                finalPrice: item.discount_price ?? item.price,
+                finalPrice: item.discont_price ?? item.price,
                 show: true,
                 discount: true,
-            }))
+            }));
         } catch (error) {
             return rejectWithValue(error.message)
         }
 
     }
-)
+);
 export const fetchAllProductsList = createAsyncThunk(
     'products/fetchAllProductsList',
     async (type, { dispatch }) => {
@@ -40,17 +40,21 @@ export const productsSlice = createSlice({
     initialState: {
         data: [],
         productslist: [],
+        showDiscountedProducts: false,
         status: 'idle',
         error: null,
     },
     
     reducers: {
-        sort: (state, { payload }) => {
-            state.data.sort((a, b) => {
-                const sortOrder = payload === 1 ? 1 : -1;
-                return sortOrder * (a.finalPrice - b.finalPrice);
-            })
+        sort: (state, action) => {
+            if (action.type === 'products/sort') {
+                state.data.sort((a, b) => {
+                    const sortOrder = action.payload === 1 ? 1 : -1;
+                    return sortOrder * (a.finalPrice - b.finalPrice);
+                });
+            }
         },
+    
         addProductsListWhithSale(state) {
 			state.data = state.data.filter(
                 (product) => product.discont_price !== null
@@ -75,7 +79,7 @@ export const productsSlice = createSlice({
 			}
 		},
         searchByPrice: (state, { payload }) => {
-            const { from, to } = payload
+            const { from, to } = payload;
             state.data = state.data.map(el =>
                 ({ ...el, show: el.finalPrice <= to && el.finalPrice >= from }));
         },
@@ -93,24 +97,33 @@ export const productsSlice = createSlice({
         },
         resetFilter: (state) => {
             state.data = state.data.map(el => ({ ...el, show: true, discount: true }))
-        }
-
+        },
+    
+  filterByPrice: (state, action) => {
+            const { from, to } = action.payload;
+            state.data = state.data.map(el =>
+                ({ ...el, show: el.finalPrice <= to && el.finalPrice >= from }));
+        },
+        toggleShowDiscountedProducts: (state) => {
+            state.showDiscountedProducts = !state.showDiscountedProducts;
+          },
     },
 
-    extraReducers: (builder) => {
+ extraReducers: (builder) => {
         builder
-            .addCase(fetchProducts.pending, state => {
+            .addCase(fetchProducts.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(fetchProducts.fulfilled, (state, { payload }) => {
-                state.data = payload
-                state.status = 'resolve'
+                state.data = payload;
+                state.status = 'resolved';
             })
             .addCase(fetchProducts.rejected, (state, { payload }) => {
                 state.status = 'rejected';
                 state.error = payload;
             });
-    },
-});
-export const { sort, searchByPrice, filterDiscount, resetFilter,addProductsListWhithSale,addProductsList } = productsSlice.actions
+        }
+    }); 
+
+export const { sort, searchByPrice, filterDiscount, resetFilter,addProductsListWhithSale,addProductsList,filterByPrice,toggleShowDiscountedProducts } = productsSlice.actions
 export default productsSlice.reducer

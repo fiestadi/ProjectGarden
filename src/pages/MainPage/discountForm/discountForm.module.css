@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-betwee;
   width: 100%;
-  height: auto;
+  /* height: auto; */
   background: linear-gradient(261deg, #0B710B 32.63%, #393 98.96%);
   border-radius: 12px;
   margin-top: -22px;
@@ -11,7 +11,7 @@
 
 }
 .imageContainer{
- max-width: 748px; 
+ max-width: 100%; 
  border-radius: 12px;
  background: cover no-repeat;
 }
@@ -19,7 +19,7 @@
   width: 100%;
 }
  .inputLabel {
-  margin-left: 40px;
+  margin-left: 2%;
   margin-top: 20px;
    display: block;
    margin-bottom: 10px;
@@ -45,10 +45,10 @@ padding: 10px;
 }
   .inputContainer {
   flex-grow: 1;
-  margin-right: 10px;
+  margin-right: 2%; 
 } 
  .button { 
-  margin-left: 40px;
+  margin-left: 2%; 
  color: #282828;
    border: none;
    cursor: pointer;
@@ -64,7 +64,7 @@ color:#393;
 border: none;
 cursor: pointer;
 display: flex;
-width: 100%;
+width: 94%;
 border-radius: 6px;
 background-color: #FFF;
 gap: 10px;
@@ -92,10 +92,18 @@ margin-left: auto;
     }
   .imageContainer {
     max-width: 100%;
-    margin-left: 0; 
+    margin-bottom: 20px;
+
   
   }
-
+  .inputLabel,
+  .inputContainer,
+  .button {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+/* 
   .inputField::placeholder {
   font-size: 15px;
   font-style: normal;
@@ -106,8 +114,11 @@ margin-left: auto;
     font-size: 15px;
   }
   .button { 
-    margin-left: 20px;
+    margin-left: 10px;
   }
+  .discountImage {
+    width: 80%;
+  } */
 }
 @media only screen and (max-width: 400px) {
   .inputField {
